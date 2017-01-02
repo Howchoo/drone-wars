@@ -6,3 +6,7 @@ class AccessPoint:
         self.mac = m
         self.channel = c
         
+    def __str__(self):
+        
+        return '<SSID: ' + str(self.ssid) + ', MAC: ' + str(self.mac) + ', CHANNEL: ' + str(self.channel) + '>'
+        

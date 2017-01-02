@@ -21,6 +21,10 @@ def main():
         env = Environment(device, ssid, v=True)
     except IndexError:
         print 'Proper usage: python ddrone.py {ssid} {wireless device}'
+        
+    if env:
+        env.crackdrone(0)
+        
     
 def findclients(ssid, device):
     """refactor me"""
