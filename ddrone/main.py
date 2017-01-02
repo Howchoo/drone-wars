@@ -18,7 +18,7 @@ def main():
     try:   
         ssid = sys.argv[1]
         device = sys.argv[2]
-        env = Environment(device, ssid)
+        env = Environment(device, ssid, v=True)
     except IndexError:
         print 'Proper usage: python ddrone.py {ssid} {wireless device}'
     
