@@ -71,6 +71,7 @@ class Environment:
     
     def __crackpsk(self, index):
         
+        time.sleep(20)
         out = 'No valid WPA handshakes found'
         for x in range(5):
             if ('No valid WPA handshakes found' not in out) or x > 4:
