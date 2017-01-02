@@ -26,12 +26,10 @@ def searchssid(device, ssid, after=None):
     return out
 
 
-def sniffssid(device, ssid):
+def sniffssid(device, ssid, channel, dumpfilename='output'):
     """start sniffing packets of SSID with device"""
     
-    cleanfiles('output-', wildcard=True)
-    
-    command = 'xterm -hold -e "airodump-ng --essid ' + ssid + ' -w output ' + device + '" &'
+    command = 'xterm -hold -e "airodump-ng --channel ' + channel + ' --essid ' + ssid + ' --write ' + dumpfilename + ' ' + device + '" &'
     p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
     
     return 0
@@ -55,9 +53,10 @@ def cleanfiles(filename, wildcard=False):
     if wildcard:
         command += '*'
         
-    subprocess.Popen(command, shell=True)
+    p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
+    out, err = p.communicate()
     
-    return 0
+    return out
 
 
 def disabledevice(device):
@@ -82,9 +81,10 @@ def airmoncheckkill():
     """checks for an kills processes that may interfere with monitor mode"""
     
     command = 'airmon-ng check kill'
-    subprocess.Popen(command, shell=True)
+    p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
+    out, err = p.communicate()
     
-    return 0
+    return out
 
 
 def startmonitormode(device, channel=None):

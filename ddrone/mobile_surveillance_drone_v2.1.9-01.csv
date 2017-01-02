@@ -1,0 +1,14 @@
+
+BSSID, First time seen, Last time seen, channel, Speed, Privacy, Cipher, Authentication, Power, # beacons, # IV, LAN IP, ID-length, ESSID, Key
+18:1B:EB:26:93:C8, 2017-01-02 02:27:38, 2017-01-02 02:27:57,  6,  54, WPA2, CCMP,PSK,   0,      166,       66,   0.  0.  0.  0,  32, mobile_surveillance_drone_v2.1.9, 
+
+Station MAC, First time seen, Last time seen, Power, # packets, BSSID, Probed ESSIDs
+B8:86:87:E5:65:5B, 2017-01-02 02:27:49, 2017-01-02 02:27:49, -72,        1, 70:F1:96:11:12:AE,
+30:46:9A:23:13:3E, 2017-01-02 02:27:48, 2017-01-02 02:27:48, -65,        1, (not associated) ,
+FC:15:B4:D0:F5:46, 2017-01-02 02:27:42, 2017-01-02 02:27:42, -63,        5, (not associated) ,FiOS-2G9QJ
+00:0A:E2:12:C2:37, 2017-01-02 02:27:45, 2017-01-02 02:27:45, -61,        1, D4:A9:28:0E:E4:54,
+A4:31:35:B6:26:10, 2017-01-02 02:27:49, 2017-01-02 02:27:49, -58,        5, (not associated) ,FiOS-64PZB_5GEXT
+E8:AB:FA:85:F7:E3, 2017-01-02 02:27:41, 2017-01-02 02:27:48, -55,        3, (not associated) ,HGWL3
+40:E2:30:3A:49:FD, 2017-01-02 02:27:53, 2017-01-02 02:27:53, -22,        3, (not associated) ,
+90:B6:86:22:05:11, 2017-01-02 02:27:48, 2017-01-02 02:27:57,   0,     1036, 18:1B:EB:26:93:C8,mobile_surveillance_drone_v2.1.9
+

