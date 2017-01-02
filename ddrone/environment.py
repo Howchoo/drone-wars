@@ -26,7 +26,7 @@ class Environment:
         out = commands.searchssid(device, ssid)
         ssids = filter(lambda item: len(item) > 0, map(lambda line: (line.replace('SSID:','')).strip(), out.split('\n')))
         accesspoints = map(lambda ssid: AccessPoint(ssid), ssids)
-		
-        if self.verbose: print map(lambda accesspoint: accesspoint.ssid, accesspoints)
+        
+        if self.verbose: print "FOUND: " + map(lambda accesspoint: accesspoint.ssid, accesspoints)
 
         return accesspoints
