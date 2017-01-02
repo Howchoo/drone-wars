@@ -48,15 +48,17 @@ def deauth(device, accesspoint_mac, client_mac, packets=10):
 def cleanfiles(filename, wildcard=False):
     """remove all files from working directory with given file name"""
     
-    command = 'rm ' + filename
-    
-    if wildcard:
-        command += '*'
-        
-    p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
-    out, err = p.communicate()
-    
-    return out
+    if filename and len(filename.strip()) > 0:
+
+        command = 'rm ' + filename
+
+        if wildcard:
+            command += '*'
+
+        p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
+        out, err = p.communicate()
+
+        return out
 
 
 def disabledevice(device):

