@@ -20,6 +20,8 @@ class Environment:
         self.ssid = s
         self.accesspoints = self.__getaccesspoints(d, s)
         self.initialized = True
+        
+        if self.verbose: print "Environment initialized!"
 
     def __getaccesspoints(self, device, ssid):
 
@@ -27,6 +29,6 @@ class Environment:
         ssids = filter(lambda item: len(item) > 0, map(lambda line: (line.replace('SSID:','')).strip(), out.split('\n')))
         accesspoints = map(lambda ssid: AccessPoint(ssid), ssids)
         
-        if self.verbose: print "FOUND: " + map(lambda accesspoint: accesspoint.ssid, accesspoints)
+        if self.verbose: print "FOUND: " + str(map(lambda accesspoint: accesspoint.ssid, accesspoints))
 
         return accesspoints
