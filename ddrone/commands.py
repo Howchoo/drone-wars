@@ -69,6 +69,15 @@ def disabledevice(device):
     return 0
 
 
+def enabledevice(device):
+    """enables device to placed into monitor mode"""
+    
+    command = 'ifconfig ' + device + ' up'
+    subprocess.Popen(command, shell=True)
+    
+    return 0 
+
+
 def airmoncheckkill():
     """checks for an kills processes that may interfere with monitor mode"""
     

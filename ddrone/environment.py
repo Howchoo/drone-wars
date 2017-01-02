@@ -9,6 +9,8 @@ class Environment:
         self.device = d
         self.ssid = s
         self.accesspoints = None
+        self.mondevice = None
+        self.monitormode = False
         self.initialized = False
         self.verbose = v
         
@@ -31,6 +33,7 @@ class Environment:
         if index < len(self.accesspoints):
             print 'Cracking ' + str(self.accesspoints[index])
             self.__startmonitormode(index)
+            self.__stopmonitormode()
         else:
             print 'Out of bounds! Only ' + len(self.accesspoints) + ' drones found.'
             
@@ -47,7 +50,7 @@ class Environment:
         accesspoints = map(lambda ssidinfo: createaccesspoint(ssidinfo), out.split('--'))
         
         if self.verbose:
-            print "FOUND: " + str(map(lambda accesspoint: str(accesspoint), accesspoints))
+            print 'FOUND: ' + str(map(lambda accesspoint: str(accesspoint), accesspoints))
 
         return accesspoints
     
@@ -59,7 +62,18 @@ class Environment:
         commands.disabledevice(self.device)
         out = commands.startmonitormode(self.device, accesspoint.channel)
 
-        return re.match(r'(.*)](.*)\)', ''.join(filter(lambda line: 'monitor mode vif enabled' in line, out.split('\n')))).groups('0')[1]
+        self.mondevice = re.match(r'(.*)](.*)\)', ''.join(filter(lambda line: 'monitor mode vif enabled' in line, out.split('\n')))).groups('0')[1]
+        self.monitormode = True
         
+        print 'Monitor mode started on ' + self.mondevice + '...'
         
+    def __stopmonitormode(self):
+        
+        commands.stopmonitormode(self.mondevice)
+        commands.enabledevice(self.device)
+        commands.startnetworkmanager()
+        
+        self.monitormode = False
+        
+        print 'Monitor mode stopped on ' + self.mondevice + '...'
     
