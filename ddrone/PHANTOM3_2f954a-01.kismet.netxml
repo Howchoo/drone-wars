@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE detection-run SYSTEM "http://kismetwireless.net/kismet-3.1.0.dtd">
 
-<detection-run kismet-version="airodump-ng-1.0" start-time="Mon Jan  2 17:57:30 2017">
+<detection-run kismet-version="airodump-ng-1.0" start-time="Mon Jan  2 18:49:39 2017">
 
-	<wireless-network number="1" type="infrastructure" first-time="Mon Jan  2 17:57:30 2017" last-time="Mon Jan  2 17:58:14 2017">
-		<SSID first-time="Mon Jan  2 17:57:30 2017" last-time="Mon Jan  2 17:58:14 2017">
+	<wireless-network number="1" type="infrastructure" first-time="Mon Jan  2 18:49:39 2017" last-time="Mon Jan  2 18:50:23 2017">
+		<SSID first-time="Mon Jan  2 18:49:39 2017" last-time="Mon Jan  2 18:50:23 2017">
 			<type>Beacon</type>
 			<max-rate>54.000000</max-rate>
-			<packets>350</packets>
+			<packets>315</packets>
 			<beaconrate>10</beaconrate>
 			<encryption>WPA+PSK</encryption>
 			<encryption>WPA+AES-CCM</encryption>
@@ -16,25 +16,106 @@
 		<BSSID>60:60:1F:2F:95:4A</BSSID>
 		<manuf>SZ DJI TECHNOLOGY CO.,LTD</manuf>
 		<channel>6</channel>
-		<freqmhz>2437 1041</freqmhz>
+		<freqmhz>2437 1673</freqmhz>
 		<maxseenrate>54000</maxseenrate>
 		<carrier>IEEE 802.11b+</carrier>
 		<encoding>CCK</encoding>
 		<packets>
-			<LLC>35</LLC>
-			<data>35</data>
+			<LLC>53</LLC>
+			<data>53</data>
 			<crypt>0</crypt>
-			<total>1041</total>
+			<total>1673</total>
 			<fragments>0</fragments>
 			<retries>0</retries>
 		</packets>
 		<datasize>0</datasize>
+		<wireless-client number="1" type="established" first-time="Mon Jan  2 18:49:41 2017" last-time="Mon Jan  2 18:50:01 2017">
+			<client-mac>B8:44:D9:B3:00:E7</client-mac>
+			<client-manuf>Apple, Inc.</client-manuf>
+			<SSID first-time="Mon Jan  2 18:49:41 2017" last-time="Mon Jan  2 18:50:01 2017">
+				<type>Probe Request</type>
+				<max-rate>54.000000</max-rate>
+				<packets>1</packets>
+				<encryption>None</encryption>
+				<ssid>PHANTOM3_2f954a</ssid>
+			</SSID>
+			<SSID first-time="Mon Jan  2 18:49:41 2017" last-time="Mon Jan  2 18:50:01 2017">
+				<type>Probe Request</type>
+				<max-rate>54.000000</max-rate>
+				<packets>1</packets>
+				<encryption>None</encryption>
+				<ssid>FiOS-W952H</ssid>
+			</SSID>
+			<channel>6</channel>
+			<maxseenrate>1.000000</maxseenrate>
+			<carrier>IEEE 802.11b+</carrier>
+			<encoding>CCK</encoding>
+			<packets>
+				<LLC>0</LLC>
+				<data>0</data>
+				<crypt>0</crypt>
+				<total>275</total>
+				<fragments>0</fragments>
+				<retries>0</retries>
+			</packets>
+			<snr-info>
+				<last_signal_dbm>-38</last_signal_dbm>
+				<last_noise_dbm>0</last_noise_dbm>
+				<last_signal_rssi>-38</last_signal_rssi>
+				<last_noise_rssi>0</last_noise_rssi>
+				<min_signal_dbm>-38</min_signal_dbm>
+				<min_noise_dbm>0</min_noise_dbm>
+				<min_signal_rssi>1024</min_signal_rssi>
+				<min_noise_rssi>1024</min_noise_rssi>
+				<max_signal_dbm>-38</max_signal_dbm>
+				<max_noise_dbm>0</max_noise_dbm>
+				<max_signal_rssi>-38</max_signal_rssi>
+				<max_noise_rssi>0</max_noise_rssi>
+			</snr-info>
+		</wireless-client>
+		<wireless-client number="2" type="established" first-time="Mon Jan  2 18:49:39 2017" last-time="Mon Jan  2 18:50:23 2017">
+			<client-mac>90:B6:86:22:05:11</client-mac>
+			<client-manuf>Murata Manufacturing Co., Ltd.</client-manuf>
+			<SSID first-time="Mon Jan  2 18:49:39 2017" last-time="Mon Jan  2 18:50:23 2017">
+				<type>Probe Request</type>
+				<max-rate>54.000000</max-rate>
+				<packets>1</packets>
+				<encryption>None</encryption>
+				<ssid>PHANTOM3_2f954a</ssid>
+			</SSID>
+			<channel>6</channel>
+			<maxseenrate>24.000000</maxseenrate>
+			<carrier>IEEE 802.11b+</carrier>
+			<encoding>CCK</encoding>
+			<packets>
+				<LLC>0</LLC>
+				<data>0</data>
+				<crypt>0</crypt>
+				<total>507</total>
+				<fragments>0</fragments>
+				<retries>0</retries>
+			</packets>
+			<snr-info>
+				<last_signal_dbm>-16</last_signal_dbm>
+				<last_noise_dbm>0</last_noise_dbm>
+				<last_signal_rssi>-16</last_signal_rssi>
+				<last_noise_rssi>0</last_noise_rssi>
+				<min_signal_dbm>-16</min_signal_dbm>
+				<min_noise_dbm>0</min_noise_dbm>
+				<min_signal_rssi>1024</min_signal_rssi>
+				<min_noise_rssi>1024</min_noise_rssi>
+				<max_signal_dbm>-16</max_signal_dbm>
+				<max_noise_dbm>0</max_noise_dbm>
+				<max_signal_rssi>-16</max_signal_rssi>
+				<max_noise_rssi>0</max_noise_rssi>
+			</snr-info>
+		</wireless-client>
 		<snr-info>
-			<last_signal_dbm>-32</last_signal_dbm>
+			<last_signal_dbm>-45</last_signal_dbm>
 			<last_noise_dbm>0</last_noise_dbm>
-			<last_signal_rssi>-32</last_signal_rssi>
+			<last_signal_rssi>-45</last_signal_rssi>
 			<last_noise_rssi>0</last_noise_rssi>
-			<min_signal_dbm>-32</min_signal_dbm>
+			<min_signal_dbm>-45</min_signal_dbm>
 			<min_noise_dbm>0</min_noise_dbm>
 			<min_signal_rssi>1024</min_signal_rssi>
 			<min_noise_rssi>1024</min_noise_rssi>
@@ -43,15 +124,15 @@
 			<max_signal_rssi>0</max_signal_rssi>
 			<max_noise_rssi>0</max_noise_rssi>
 		</snr-info>
-		<bsstimestamp>1210677740</bsstimestamp>
+		<bsstimestamp>4339712384</bsstimestamp>
 		<cdp-device></cdp-device>
 		<cdp-portid></cdp-portid>
 	</wireless-network>
-	<wireless-network number="2" type="probe" first-time="Mon Jan  2 17:58:08 2017" last-time="Mon Jan  2 17:58:08 2017">
-		<BSSID>74:C2:46:51:A9:37</BSSID>
-		<manuf>Amazon Technologies Inc.</manuf>
+	<wireless-network number="2" type="probe" first-time="Mon Jan  2 18:49:47 2017" last-time="Mon Jan  2 18:49:47 2017">
+		<BSSID>E4:A7:A0:6A:40:FA</BSSID>
+		<manuf>Intel Corporate</manuf>
 		<channel>6</channel>
-		<freqmhz>2437 1</freqmhz>
+		<freqmhz>2437 3</freqmhz>
 		<maxseenrate>1.000000</maxseenrate>
 		<carrier>IEEE 802.11b+</carrier>
 		<encoding>CCK</encoding>
@@ -59,32 +140,32 @@
 			<LLC>0</LLC>
 			<data>0</data>
 			<crypt>0</crypt>
-			<total>1</total>
+			<total>3</total>
 			<fragments>0</fragments>
 			<retries>0</retries>
 		</packets>
 		<datasize>0</datasize>
 		<snr-info>
-			<last_signal_dbm>-73</last_signal_dbm>
+			<last_signal_dbm>-70</last_signal_dbm>
 			<last_noise_dbm>0</last_noise_dbm>
-			<last_signal_rssi>-73</last_signal_rssi>
+			<last_signal_rssi>-70</last_signal_rssi>
 			<last_noise_rssi>0</last_noise_rssi>
-			<min_signal_dbm>-73</min_signal_dbm>
+			<min_signal_dbm>-70</min_signal_dbm>
 			<min_noise_dbm>0</min_noise_dbm>
 			<min_signal_rssi>1024</min_signal_rssi>
 			<min_noise_rssi>1024</min_noise_rssi>
-			<max_signal_dbm>-73</max_signal_dbm>
+			<max_signal_dbm>-70</max_signal_dbm>
 			<max_noise_dbm>0</max_noise_dbm>
-			<max_signal_rssi>-73</max_signal_rssi>
+			<max_signal_rssi>-70</max_signal_rssi>
 			<max_noise_rssi>0</max_noise_rssi>
 		</snr-info>
 		<bsstimestamp>0</bsstimestamp>
 		<cdp-device></cdp-device>
 		<cdp-portid></cdp-portid>
-		<wireless-client number="1" type="tods" first-time="Mon Jan  2 17:58:08 2017" last-time="Mon Jan  2 17:58:08 2017">
-			<client-mac>74:C2:46:51:A9:37</client-mac>
-			<client-manuf>Amazon Technologies Inc.</client-manuf>
-			<SSID first-time="Mon Jan  2 17:58:08 2017" last-time="Mon Jan  2 17:58:08 2017">
+		<wireless-client number="1" type="tods" first-time="Mon Jan  2 18:49:47 2017" last-time="Mon Jan  2 18:49:47 2017">
+			<client-mac>E4:A7:A0:6A:40:FA</client-mac>
+			<client-manuf>Intel Corporate</client-manuf>
+			<SSID first-time="Mon Jan  2 18:49:47 2017" last-time="Mon Jan  2 18:49:47 2017">
 				<type>Probe Request</type>
 				<max-rate>54.000000</max-rate>
 				<packets>1</packets>
@@ -98,30 +179,30 @@
 				<LLC>0</LLC>
 				<data>0</data>
 				<crypt>0</crypt>
-				<total>1</total>
+				<total>3</total>
 				<fragments>0</fragments>
 				<retries>0</retries>
 			</packets>
 			<snr-info>
-				<last_signal_dbm>-73</last_signal_dbm>
+				<last_signal_dbm>-70</last_signal_dbm>
 				<last_noise_dbm>0</last_noise_dbm>
-				<last_signal_rssi>-73</last_signal_rssi>
+				<last_signal_rssi>-70</last_signal_rssi>
 				<last_noise_rssi>0</last_noise_rssi>
-				<min_signal_dbm>-73</min_signal_dbm>
+				<min_signal_dbm>-70</min_signal_dbm>
 				<min_noise_dbm>0</min_noise_dbm>
 				<min_signal_rssi>1024</min_signal_rssi>
 				<min_noise_rssi>1024</min_noise_rssi>
-				<max_signal_dbm>-73</max_signal_dbm>
+				<max_signal_dbm>-70</max_signal_dbm>
 				<max_noise_dbm>0</max_noise_dbm>
-				<max_signal_rssi>-73</max_signal_rssi>
+				<max_signal_rssi>-70</max_signal_rssi>
 				<max_noise_rssi>0</max_noise_rssi>
 			</snr-info>
 		</wireless-client>
-	</wireless-network>	<wireless-network number="3" type="probe" first-time="Mon Jan  2 17:57:52 2017" last-time="Mon Jan  2 17:57:52 2017">
-		<BSSID>68:48:98:BD:13:70</BSSID>
-		<manuf>Samsung Electronics Co.,Ltd</manuf>
+	</wireless-network>	<wireless-network number="3" type="probe" first-time="Mon Jan  2 18:49:44 2017" last-time="Mon Jan  2 18:50:22 2017">
+		<BSSID>F8:04:2E:94:58:4F</BSSID>
+		<manuf>SAMSUNG ELECTRO-MECHANICS(THAILAND)</manuf>
 		<channel>6</channel>
-		<freqmhz>2437 1</freqmhz>
+		<freqmhz>2437 3</freqmhz>
 		<maxseenrate>1.000000</maxseenrate>
 		<carrier>IEEE 802.11b+</carrier>
 		<encoding>CCK</encoding>
@@ -129,32 +210,32 @@
 			<LLC>0</LLC>
 			<data>0</data>
 			<crypt>0</crypt>
-			<total>1</total>
+			<total>3</total>
 			<fragments>0</fragments>
 			<retries>0</retries>
 		</packets>
 		<datasize>0</datasize>
 		<snr-info>
-			<last_signal_dbm>-71</last_signal_dbm>
+			<last_signal_dbm>-70</last_signal_dbm>
 			<last_noise_dbm>0</last_noise_dbm>
-			<last_signal_rssi>-71</last_signal_rssi>
+			<last_signal_rssi>-70</last_signal_rssi>
 			<last_noise_rssi>0</last_noise_rssi>
-			<min_signal_dbm>-71</min_signal_dbm>
+			<min_signal_dbm>-70</min_signal_dbm>
 			<min_noise_dbm>0</min_noise_dbm>
 			<min_signal_rssi>1024</min_signal_rssi>
 			<min_noise_rssi>1024</min_noise_rssi>
-			<max_signal_dbm>-71</max_signal_dbm>
+			<max_signal_dbm>-70</max_signal_dbm>
 			<max_noise_dbm>0</max_noise_dbm>
-			<max_signal_rssi>-71</max_signal_rssi>
+			<max_signal_rssi>-70</max_signal_rssi>
 			<max_noise_rssi>0</max_noise_rssi>
 		</snr-info>
 		<bsstimestamp>0</bsstimestamp>
 		<cdp-device></cdp-device>
 		<cdp-portid></cdp-portid>
-		<wireless-client number="1" type="tods" first-time="Mon Jan  2 17:57:52 2017" last-time="Mon Jan  2 17:57:52 2017">
-			<client-mac>68:48:98:BD:13:70</client-mac>
-			<client-manuf>Samsung Electronics Co.,Ltd</client-manuf>
-			<SSID first-time="Mon Jan  2 17:57:52 2017" last-time="Mon Jan  2 17:57:52 2017">
+		<wireless-client number="1" type="tods" first-time="Mon Jan  2 18:49:44 2017" last-time="Mon Jan  2 18:50:22 2017">
+			<client-mac>F8:04:2E:94:58:4F</client-mac>
+			<client-manuf>SAMSUNG ELECTRO-MECHANICS(THAILAND)</client-manuf>
+			<SSID first-time="Mon Jan  2 18:49:44 2017" last-time="Mon Jan  2 18:50:22 2017">
 				<type>Probe Request</type>
 				<max-rate>54.000000</max-rate>
 				<packets>1</packets>
@@ -168,171 +249,30 @@
 				<LLC>0</LLC>
 				<data>0</data>
 				<crypt>0</crypt>
-				<total>1</total>
+				<total>3</total>
 				<fragments>0</fragments>
 				<retries>0</retries>
 			</packets>
 			<snr-info>
-				<last_signal_dbm>-71</last_signal_dbm>
+				<last_signal_dbm>-70</last_signal_dbm>
 				<last_noise_dbm>0</last_noise_dbm>
-				<last_signal_rssi>-71</last_signal_rssi>
+				<last_signal_rssi>-70</last_signal_rssi>
 				<last_noise_rssi>0</last_noise_rssi>
-				<min_signal_dbm>-71</min_signal_dbm>
+				<min_signal_dbm>-70</min_signal_dbm>
 				<min_noise_dbm>0</min_noise_dbm>
 				<min_signal_rssi>1024</min_signal_rssi>
 				<min_noise_rssi>1024</min_noise_rssi>
-				<max_signal_dbm>-71</max_signal_dbm>
+				<max_signal_dbm>-70</max_signal_dbm>
 				<max_noise_dbm>0</max_noise_dbm>
-				<max_signal_rssi>-71</max_signal_rssi>
+				<max_signal_rssi>-70</max_signal_rssi>
 				<max_noise_rssi>0</max_noise_rssi>
 			</snr-info>
 		</wireless-client>
-	</wireless-network>	<wireless-network number="4" type="probe" first-time="Mon Jan  2 17:57:56 2017" last-time="Mon Jan  2 17:57:56 2017">
-		<BSSID>A4:17:31:5B:16:75</BSSID>
-		<manuf>Hon Hai Precision Ind. Co.,Ltd.</manuf>
-		<channel>6</channel>
-		<freqmhz>2437 4</freqmhz>
-		<maxseenrate>1.000000</maxseenrate>
-		<carrier>IEEE 802.11b+</carrier>
-		<encoding>CCK</encoding>
-		<packets>
-			<LLC>0</LLC>
-			<data>0</data>
-			<crypt>0</crypt>
-			<total>4</total>
-			<fragments>0</fragments>
-			<retries>0</retries>
-		</packets>
-		<datasize>0</datasize>
-		<snr-info>
-			<last_signal_dbm>-66</last_signal_dbm>
-			<last_noise_dbm>0</last_noise_dbm>
-			<last_signal_rssi>-66</last_signal_rssi>
-			<last_noise_rssi>0</last_noise_rssi>
-			<min_signal_dbm>-66</min_signal_dbm>
-			<min_noise_dbm>0</min_noise_dbm>
-			<min_signal_rssi>1024</min_signal_rssi>
-			<min_noise_rssi>1024</min_noise_rssi>
-			<max_signal_dbm>-66</max_signal_dbm>
-			<max_noise_dbm>0</max_noise_dbm>
-			<max_signal_rssi>-66</max_signal_rssi>
-			<max_noise_rssi>0</max_noise_rssi>
-		</snr-info>
-		<bsstimestamp>0</bsstimestamp>
-		<cdp-device></cdp-device>
-		<cdp-portid></cdp-portid>
-		<wireless-client number="1" type="tods" first-time="Mon Jan  2 17:57:56 2017" last-time="Mon Jan  2 17:57:56 2017">
-			<client-mac>A4:17:31:5B:16:75</client-mac>
-			<client-manuf>Hon Hai Precision Ind. Co.,Ltd.</client-manuf>
-			<SSID first-time="Mon Jan  2 17:57:56 2017" last-time="Mon Jan  2 17:57:56 2017">
-				<type>Probe Request</type>
-				<max-rate>54.000000</max-rate>
-				<packets>1</packets>
-				<encryption>None</encryption>
-				<ssid>WPATubez</ssid>
-			</SSID>
-			<channel>6</channel>
-			<maxseenrate>1.000000</maxseenrate>
-			<carrier>IEEE 802.11b+</carrier>
-			<encoding>CCK</encoding>
-			<packets>
-				<LLC>0</LLC>
-				<data>0</data>
-				<crypt>0</crypt>
-				<total>4</total>
-				<fragments>0</fragments>
-				<retries>0</retries>
-			</packets>
-			<snr-info>
-				<last_signal_dbm>-66</last_signal_dbm>
-				<last_noise_dbm>0</last_noise_dbm>
-				<last_signal_rssi>-66</last_signal_rssi>
-				<last_noise_rssi>0</last_noise_rssi>
-				<min_signal_dbm>-66</min_signal_dbm>
-				<min_noise_dbm>0</min_noise_dbm>
-				<min_signal_rssi>1024</min_signal_rssi>
-				<min_noise_rssi>1024</min_noise_rssi>
-				<max_signal_dbm>-66</max_signal_dbm>
-				<max_noise_dbm>0</max_noise_dbm>
-				<max_signal_rssi>-66</max_signal_rssi>
-				<max_noise_rssi>0</max_noise_rssi>
-			</snr-info>
-		</wireless-client>
-	</wireless-network>	<wireless-network number="5" type="probe" first-time="Mon Jan  2 17:57:43 2017" last-time="Mon Jan  2 17:57:43 2017">
-		<BSSID>AC:5A:14:76:3F:5E</BSSID>
-		<manuf>Samsung Electronics Co.,Ltd</manuf>
-		<channel>6</channel>
-		<freqmhz>2437 4</freqmhz>
-		<maxseenrate>1.000000</maxseenrate>
-		<carrier>IEEE 802.11b+</carrier>
-		<encoding>CCK</encoding>
-		<packets>
-			<LLC>0</LLC>
-			<data>0</data>
-			<crypt>0</crypt>
-			<total>4</total>
-			<fragments>0</fragments>
-			<retries>0</retries>
-		</packets>
-		<datasize>0</datasize>
-		<snr-info>
-			<last_signal_dbm>-65</last_signal_dbm>
-			<last_noise_dbm>0</last_noise_dbm>
-			<last_signal_rssi>-65</last_signal_rssi>
-			<last_noise_rssi>0</last_noise_rssi>
-			<min_signal_dbm>-65</min_signal_dbm>
-			<min_noise_dbm>0</min_noise_dbm>
-			<min_signal_rssi>1024</min_signal_rssi>
-			<min_noise_rssi>1024</min_noise_rssi>
-			<max_signal_dbm>-65</max_signal_dbm>
-			<max_noise_dbm>0</max_noise_dbm>
-			<max_signal_rssi>-65</max_signal_rssi>
-			<max_noise_rssi>0</max_noise_rssi>
-		</snr-info>
-		<bsstimestamp>0</bsstimestamp>
-		<cdp-device></cdp-device>
-		<cdp-portid></cdp-portid>
-		<wireless-client number="1" type="tods" first-time="Mon Jan  2 17:57:43 2017" last-time="Mon Jan  2 17:57:43 2017">
-			<client-mac>AC:5A:14:76:3F:5E</client-mac>
-			<client-manuf>Samsung Electronics Co.,Ltd</client-manuf>
-			<SSID first-time="Mon Jan  2 17:57:43 2017" last-time="Mon Jan  2 17:57:43 2017">
-				<type>Probe Request</type>
-				<max-rate>54.000000</max-rate>
-				<packets>1</packets>
-				<encryption>None</encryption>
-			</SSID>
-			<channel>6</channel>
-			<maxseenrate>1.000000</maxseenrate>
-			<carrier>IEEE 802.11b+</carrier>
-			<encoding>CCK</encoding>
-			<packets>
-				<LLC>0</LLC>
-				<data>0</data>
-				<crypt>0</crypt>
-				<total>4</total>
-				<fragments>0</fragments>
-				<retries>0</retries>
-			</packets>
-			<snr-info>
-				<last_signal_dbm>-65</last_signal_dbm>
-				<last_noise_dbm>0</last_noise_dbm>
-				<last_signal_rssi>-65</last_signal_rssi>
-				<last_noise_rssi>0</last_noise_rssi>
-				<min_signal_dbm>-65</min_signal_dbm>
-				<min_noise_dbm>0</min_noise_dbm>
-				<min_signal_rssi>1024</min_signal_rssi>
-				<min_noise_rssi>1024</min_noise_rssi>
-				<max_signal_dbm>-65</max_signal_dbm>
-				<max_noise_dbm>0</max_noise_dbm>
-				<max_signal_rssi>-65</max_signal_rssi>
-				<max_noise_rssi>0</max_noise_rssi>
-			</snr-info>
-		</wireless-client>
-	</wireless-network>	<wireless-network number="6" type="probe" first-time="Mon Jan  2 17:57:41 2017" last-time="Mon Jan  2 17:58:08 2017">
+	</wireless-network>	<wireless-network number="4" type="probe" first-time="Mon Jan  2 18:49:45 2017" last-time="Mon Jan  2 18:49:59 2017">
 		<BSSID>BC:30:7D:2F:97:60</BSSID>
 		<manuf>Wistron Neweb Corporation</manuf>
 		<channel>6</channel>
-		<freqmhz>2437 9</freqmhz>
+		<freqmhz>2437 2</freqmhz>
 		<maxseenrate>1.000000</maxseenrate>
 		<carrier>IEEE 802.11b+</carrier>
 		<encoding>CCK</encoding>
@@ -340,32 +280,32 @@
 			<LLC>0</LLC>
 			<data>0</data>
 			<crypt>0</crypt>
-			<total>9</total>
+			<total>2</total>
 			<fragments>0</fragments>
 			<retries>0</retries>
 		</packets>
 		<datasize>0</datasize>
 		<snr-info>
-			<last_signal_dbm>-64</last_signal_dbm>
+			<last_signal_dbm>-67</last_signal_dbm>
 			<last_noise_dbm>0</last_noise_dbm>
-			<last_signal_rssi>-64</last_signal_rssi>
+			<last_signal_rssi>-67</last_signal_rssi>
 			<last_noise_rssi>0</last_noise_rssi>
-			<min_signal_dbm>-64</min_signal_dbm>
+			<min_signal_dbm>-67</min_signal_dbm>
 			<min_noise_dbm>0</min_noise_dbm>
 			<min_signal_rssi>1024</min_signal_rssi>
 			<min_noise_rssi>1024</min_noise_rssi>
-			<max_signal_dbm>-64</max_signal_dbm>
+			<max_signal_dbm>-67</max_signal_dbm>
 			<max_noise_dbm>0</max_noise_dbm>
-			<max_signal_rssi>-64</max_signal_rssi>
+			<max_signal_rssi>-67</max_signal_rssi>
 			<max_noise_rssi>0</max_noise_rssi>
 		</snr-info>
 		<bsstimestamp>0</bsstimestamp>
 		<cdp-device></cdp-device>
 		<cdp-portid></cdp-portid>
-		<wireless-client number="1" type="tods" first-time="Mon Jan  2 17:57:41 2017" last-time="Mon Jan  2 17:58:08 2017">
+		<wireless-client number="1" type="tods" first-time="Mon Jan  2 18:49:45 2017" last-time="Mon Jan  2 18:49:59 2017">
 			<client-mac>BC:30:7D:2F:97:60</client-mac>
 			<client-manuf>Wistron Neweb Corporation</client-manuf>
-			<SSID first-time="Mon Jan  2 17:57:41 2017" last-time="Mon Jan  2 17:58:08 2017">
+			<SSID first-time="Mon Jan  2 18:49:45 2017" last-time="Mon Jan  2 18:49:59 2017">
 				<type>Probe Request</type>
 				<max-rate>54.000000</max-rate>
 				<packets>1</packets>
@@ -380,26 +320,26 @@
 				<LLC>0</LLC>
 				<data>0</data>
 				<crypt>0</crypt>
-				<total>9</total>
+				<total>2</total>
 				<fragments>0</fragments>
 				<retries>0</retries>
 			</packets>
 			<snr-info>
-				<last_signal_dbm>-64</last_signal_dbm>
+				<last_signal_dbm>-67</last_signal_dbm>
 				<last_noise_dbm>0</last_noise_dbm>
-				<last_signal_rssi>-64</last_signal_rssi>
+				<last_signal_rssi>-67</last_signal_rssi>
 				<last_noise_rssi>0</last_noise_rssi>
-				<min_signal_dbm>-64</min_signal_dbm>
+				<min_signal_dbm>-67</min_signal_dbm>
 				<min_noise_dbm>0</min_noise_dbm>
 				<min_signal_rssi>1024</min_signal_rssi>
 				<min_noise_rssi>1024</min_noise_rssi>
-				<max_signal_dbm>-64</max_signal_dbm>
+				<max_signal_dbm>-67</max_signal_dbm>
 				<max_noise_dbm>0</max_noise_dbm>
-				<max_signal_rssi>-64</max_signal_rssi>
+				<max_signal_rssi>-67</max_signal_rssi>
 				<max_noise_rssi>0</max_noise_rssi>
 			</snr-info>
 		</wireless-client>
-	</wireless-network>	<wireless-network number="7" type="probe" first-time="Mon Jan  2 17:57:47 2017" last-time="Mon Jan  2 17:57:47 2017">
+	</wireless-network>	<wireless-network number="5" type="probe" first-time="Mon Jan  2 18:50:06 2017" last-time="Mon Jan  2 18:50:06 2017">
 		<BSSID>80:D2:1D:41:DF:0D</BSSID>
 		<manuf>AzureWave Technology Inc.</manuf>
 		<channel>6</channel>
@@ -417,26 +357,26 @@
 		</packets>
 		<datasize>0</datasize>
 		<snr-info>
-			<last_signal_dbm>-55</last_signal_dbm>
+			<last_signal_dbm>-57</last_signal_dbm>
 			<last_noise_dbm>0</last_noise_dbm>
-			<last_signal_rssi>-55</last_signal_rssi>
+			<last_signal_rssi>-57</last_signal_rssi>
 			<last_noise_rssi>0</last_noise_rssi>
-			<min_signal_dbm>-55</min_signal_dbm>
+			<min_signal_dbm>-57</min_signal_dbm>
 			<min_noise_dbm>0</min_noise_dbm>
 			<min_signal_rssi>1024</min_signal_rssi>
 			<min_noise_rssi>1024</min_noise_rssi>
-			<max_signal_dbm>-55</max_signal_dbm>
+			<max_signal_dbm>-57</max_signal_dbm>
 			<max_noise_dbm>0</max_noise_dbm>
-			<max_signal_rssi>-55</max_signal_rssi>
+			<max_signal_rssi>-57</max_signal_rssi>
 			<max_noise_rssi>0</max_noise_rssi>
 		</snr-info>
 		<bsstimestamp>0</bsstimestamp>
 		<cdp-device></cdp-device>
 		<cdp-portid></cdp-portid>
-		<wireless-client number="1" type="tods" first-time="Mon Jan  2 17:57:47 2017" last-time="Mon Jan  2 17:57:47 2017">
+		<wireless-client number="1" type="tods" first-time="Mon Jan  2 18:50:06 2017" last-time="Mon Jan  2 18:50:06 2017">
 			<client-mac>80:D2:1D:41:DF:0D</client-mac>
 			<client-manuf>AzureWave Technology Inc.</client-manuf>
-			<SSID first-time="Mon Jan  2 17:57:47 2017" last-time="Mon Jan  2 17:57:47 2017">
+			<SSID first-time="Mon Jan  2 18:50:06 2017" last-time="Mon Jan  2 18:50:06 2017">
 				<type>Probe Request</type>
 				<max-rate>54.000000</max-rate>
 				<packets>1</packets>
@@ -456,25 +396,25 @@
 				<retries>0</retries>
 			</packets>
 			<snr-info>
-				<last_signal_dbm>-55</last_signal_dbm>
+				<last_signal_dbm>-57</last_signal_dbm>
 				<last_noise_dbm>0</last_noise_dbm>
-				<last_signal_rssi>-55</last_signal_rssi>
+				<last_signal_rssi>-57</last_signal_rssi>
 				<last_noise_rssi>0</last_noise_rssi>
-				<min_signal_dbm>-55</min_signal_dbm>
+				<min_signal_dbm>-57</min_signal_dbm>
 				<min_noise_dbm>0</min_noise_dbm>
 				<min_signal_rssi>1024</min_signal_rssi>
 				<min_noise_rssi>1024</min_noise_rssi>
-				<max_signal_dbm>-55</max_signal_dbm>
+				<max_signal_dbm>-57</max_signal_dbm>
 				<max_noise_dbm>0</max_noise_dbm>
-				<max_signal_rssi>-55</max_signal_rssi>
+				<max_signal_rssi>-57</max_signal_rssi>
 				<max_noise_rssi>0</max_noise_rssi>
 			</snr-info>
 		</wireless-client>
-	</wireless-network>	<wireless-network number="8" type="probe" first-time="Mon Jan  2 17:58:05 2017" last-time="Mon Jan  2 17:58:06 2017">
+	</wireless-network>	<wireless-network number="6" type="probe" first-time="Mon Jan  2 18:50:05 2017" last-time="Mon Jan  2 18:50:06 2017">
 		<BSSID>74:DA:38:0C:F9:C8</BSSID>
 		<manuf>Edimax Technology Co. Ltd.</manuf>
 		<channel>6</channel>
-		<freqmhz>2437 6</freqmhz>
+		<freqmhz>2437 4</freqmhz>
 		<maxseenrate>1.000000</maxseenrate>
 		<carrier>IEEE 802.11b+</carrier>
 		<encoding>CCK</encoding>
@@ -482,7 +422,162 @@
 			<LLC>0</LLC>
 			<data>0</data>
 			<crypt>0</crypt>
-			<total>6</total>
+			<total>4</total>
+			<fragments>0</fragments>
+			<retries>0</retries>
+		</packets>
+		<datasize>0</datasize>
+		<snr-info>
+			<last_signal_dbm>-40</last_signal_dbm>
+			<last_noise_dbm>0</last_noise_dbm>
+			<last_signal_rssi>-40</last_signal_rssi>
+			<last_noise_rssi>0</last_noise_rssi>
+			<min_signal_dbm>-40</min_signal_dbm>
+			<min_noise_dbm>0</min_noise_dbm>
+			<min_signal_rssi>1024</min_signal_rssi>
+			<min_noise_rssi>1024</min_noise_rssi>
+			<max_signal_dbm>-40</max_signal_dbm>
+			<max_noise_dbm>0</max_noise_dbm>
+			<max_signal_rssi>-40</max_signal_rssi>
+			<max_noise_rssi>0</max_noise_rssi>
+		</snr-info>
+		<bsstimestamp>0</bsstimestamp>
+		<cdp-device></cdp-device>
+		<cdp-portid></cdp-portid>
+		<wireless-client number="1" type="tods" first-time="Mon Jan  2 18:50:05 2017" last-time="Mon Jan  2 18:50:06 2017">
+			<client-mac>74:DA:38:0C:F9:C8</client-mac>
+			<client-manuf>Edimax Technology Co. Ltd.</client-manuf>
+			<SSID first-time="Mon Jan  2 18:50:05 2017" last-time="Mon Jan  2 18:50:06 2017">
+				<type>Probe Request</type>
+				<max-rate>54.000000</max-rate>
+				<packets>1</packets>
+				<encryption>None</encryption>
+			</SSID>
+			<channel>6</channel>
+			<maxseenrate>1.000000</maxseenrate>
+			<carrier>IEEE 802.11b+</carrier>
+			<encoding>CCK</encoding>
+			<packets>
+				<LLC>0</LLC>
+				<data>0</data>
+				<crypt>0</crypt>
+				<total>4</total>
+				<fragments>0</fragments>
+				<retries>0</retries>
+			</packets>
+			<snr-info>
+				<last_signal_dbm>-40</last_signal_dbm>
+				<last_noise_dbm>0</last_noise_dbm>
+				<last_signal_rssi>-40</last_signal_rssi>
+				<last_noise_rssi>0</last_noise_rssi>
+				<min_signal_dbm>-40</min_signal_dbm>
+				<min_noise_dbm>0</min_noise_dbm>
+				<min_signal_rssi>1024</min_signal_rssi>
+				<min_noise_rssi>1024</min_noise_rssi>
+				<max_signal_dbm>-40</max_signal_dbm>
+				<max_noise_dbm>0</max_noise_dbm>
+				<max_signal_rssi>-40</max_signal_rssi>
+				<max_noise_rssi>0</max_noise_rssi>
+			</snr-info>
+		</wireless-client>
+	</wireless-network>	<wireless-network number="7" type="probe" first-time="Mon Jan  2 18:49:59 2017" last-time="Mon Jan  2 18:49:59 2017">
+		<BSSID>8A:80:E5:EF:5D:55</BSSID>
+		<manuf>Unknown</manuf>
+		<channel>6</channel>
+		<freqmhz>2437 4</freqmhz>
+		<maxseenrate>1.000000</maxseenrate>
+		<carrier>IEEE 802.11b+</carrier>
+		<encoding>CCK</encoding>
+		<packets>
+			<LLC>0</LLC>
+			<data>0</data>
+			<crypt>0</crypt>
+			<total>4</total>
+			<fragments>0</fragments>
+			<retries>0</retries>
+		</packets>
+		<datasize>0</datasize>
+		<snr-info>
+			<last_signal_dbm>-38</last_signal_dbm>
+			<last_noise_dbm>0</last_noise_dbm>
+			<last_signal_rssi>-38</last_signal_rssi>
+			<last_noise_rssi>0</last_noise_rssi>
+			<min_signal_dbm>-38</min_signal_dbm>
+			<min_noise_dbm>0</min_noise_dbm>
+			<min_signal_rssi>1024</min_signal_rssi>
+			<min_noise_rssi>1024</min_noise_rssi>
+			<max_signal_dbm>-38</max_signal_dbm>
+			<max_noise_dbm>0</max_noise_dbm>
+			<max_signal_rssi>-38</max_signal_rssi>
+			<max_noise_rssi>0</max_noise_rssi>
+		</snr-info>
+		<bsstimestamp>0</bsstimestamp>
+		<cdp-device></cdp-device>
+		<cdp-portid></cdp-portid>
+		<wireless-client number="1" type="tods" first-time="Mon Jan  2 18:49:59 2017" last-time="Mon Jan  2 18:49:59 2017">
+			<client-mac>8A:80:E5:EF:5D:55</client-mac>
+			<client-manuf>Unknown</client-manuf>
+			<SSID first-time="Mon Jan  2 18:49:59 2017" last-time="Mon Jan  2 18:49:59 2017">
+				<type>Probe Request</type>
+				<max-rate>54.000000</max-rate>
+				<packets>1</packets>
+				<encryption>None</encryption>
+				<ssid>D44QM</ssid>
+			</SSID>
+			<SSID first-time="Mon Jan  2 18:49:59 2017" last-time="Mon Jan  2 18:49:59 2017">
+				<type>Probe Request</type>
+				<max-rate>54.000000</max-rate>
+				<packets>1</packets>
+				<encryption>None</encryption>
+				<ssid>Linksters Brandon</ssid>
+			</SSID>
+			<SSID first-time="Mon Jan  2 18:49:59 2017" last-time="Mon Jan  2 18:49:59 2017">
+				<type>Probe Request</type>
+				<max-rate>54.000000</max-rate>
+				<packets>1</packets>
+				<encryption>None</encryption>
+				<ssid>loganwifi</ssid>
+			</SSID>
+			<channel>6</channel>
+			<maxseenrate>1.000000</maxseenrate>
+			<carrier>IEEE 802.11b+</carrier>
+			<encoding>CCK</encoding>
+			<packets>
+				<LLC>0</LLC>
+				<data>0</data>
+				<crypt>0</crypt>
+				<total>4</total>
+				<fragments>0</fragments>
+				<retries>0</retries>
+			</packets>
+			<snr-info>
+				<last_signal_dbm>-38</last_signal_dbm>
+				<last_noise_dbm>0</last_noise_dbm>
+				<last_signal_rssi>-38</last_signal_rssi>
+				<last_noise_rssi>0</last_noise_rssi>
+				<min_signal_dbm>-38</min_signal_dbm>
+				<min_noise_dbm>0</min_noise_dbm>
+				<min_signal_rssi>1024</min_signal_rssi>
+				<min_noise_rssi>1024</min_noise_rssi>
+				<max_signal_dbm>-38</max_signal_dbm>
+				<max_noise_dbm>0</max_noise_dbm>
+				<max_signal_rssi>-38</max_signal_rssi>
+				<max_noise_rssi>0</max_noise_rssi>
+			</snr-info>
+		</wireless-client>
+	</wireless-network>	<wireless-network number="8" type="probe" first-time="Mon Jan  2 18:49:59 2017" last-time="Mon Jan  2 18:49:59 2017">
+		<BSSID>96:CA:CF:C7:39:51</BSSID>
+		<manuf>Unknown</manuf>
+		<channel>6</channel>
+		<freqmhz>2437 4</freqmhz>
+		<maxseenrate>1.000000</maxseenrate>
+		<carrier>IEEE 802.11b+</carrier>
+		<encoding>CCK</encoding>
+		<packets>
+			<LLC>0</LLC>
+			<data>0</data>
+			<crypt>0</crypt>
+			<total>4</total>
 			<fragments>0</fragments>
 			<retries>0</retries>
 		</packets>
@@ -504,14 +599,29 @@
 		<bsstimestamp>0</bsstimestamp>
 		<cdp-device></cdp-device>
 		<cdp-portid></cdp-portid>
-		<wireless-client number="1" type="tods" first-time="Mon Jan  2 17:58:05 2017" last-time="Mon Jan  2 17:58:06 2017">
-			<client-mac>74:DA:38:0C:F9:C8</client-mac>
-			<client-manuf>Edimax Technology Co. Ltd.</client-manuf>
-			<SSID first-time="Mon Jan  2 17:58:05 2017" last-time="Mon Jan  2 17:58:06 2017">
+		<wireless-client number="1" type="tods" first-time="Mon Jan  2 18:49:59 2017" last-time="Mon Jan  2 18:49:59 2017">
+			<client-mac>96:CA:CF:C7:39:51</client-mac>
+			<client-manuf>Unknown</client-manuf>
+			<SSID first-time="Mon Jan  2 18:49:59 2017" last-time="Mon Jan  2 18:49:59 2017">
 				<type>Probe Request</type>
 				<max-rate>54.000000</max-rate>
 				<packets>1</packets>
 				<encryption>None</encryption>
+				<ssid>D44QM</ssid>
+			</SSID>
+			<SSID first-time="Mon Jan  2 18:49:59 2017" last-time="Mon Jan  2 18:49:59 2017">
+				<type>Probe Request</type>
+				<max-rate>54.000000</max-rate>
+				<packets>1</packets>
+				<encryption>None</encryption>
+				<ssid>Linksters Brandon</ssid>
+			</SSID>
+			<SSID first-time="Mon Jan  2 18:49:59 2017" last-time="Mon Jan  2 18:49:59 2017">
+				<type>Probe Request</type>
+				<max-rate>54.000000</max-rate>
+				<packets>1</packets>
+				<encryption>None</encryption>
+				<ssid>loganwifi</ssid>
 			</SSID>
 			<channel>6</channel>
 			<maxseenrate>1.000000</maxseenrate>
@@ -521,7 +631,7 @@
 				<LLC>0</LLC>
 				<data>0</data>
 				<crypt>0</crypt>
-				<total>6</total>
+				<total>4</total>
 				<fragments>0</fragments>
 				<retries>0</retries>
 			</packets>
@@ -537,6 +647,76 @@
 				<max_signal_dbm>-37</max_signal_dbm>
 				<max_noise_dbm>0</max_noise_dbm>
 				<max_signal_rssi>-37</max_signal_rssi>
+				<max_noise_rssi>0</max_noise_rssi>
+			</snr-info>
+		</wireless-client>
+	</wireless-network>	<wireless-network number="9" type="probe" first-time="Mon Jan  2 18:49:39 2017" last-time="Mon Jan  2 18:49:39 2017">
+		<BSSID>92:68:C3:B3:BF:FF</BSSID>
+		<manuf>Unknown</manuf>
+		<channel>6</channel>
+		<freqmhz>2437 1</freqmhz>
+		<maxseenrate>1.000000</maxseenrate>
+		<carrier>IEEE 802.11b+</carrier>
+		<encoding>CCK</encoding>
+		<packets>
+			<LLC>0</LLC>
+			<data>0</data>
+			<crypt>0</crypt>
+			<total>1</total>
+			<fragments>0</fragments>
+			<retries>0</retries>
+		</packets>
+		<datasize>0</datasize>
+		<snr-info>
+			<last_signal_dbm>-26</last_signal_dbm>
+			<last_noise_dbm>0</last_noise_dbm>
+			<last_signal_rssi>-26</last_signal_rssi>
+			<last_noise_rssi>0</last_noise_rssi>
+			<min_signal_dbm>-26</min_signal_dbm>
+			<min_noise_dbm>0</min_noise_dbm>
+			<min_signal_rssi>1024</min_signal_rssi>
+			<min_noise_rssi>1024</min_noise_rssi>
+			<max_signal_dbm>-26</max_signal_dbm>
+			<max_noise_dbm>0</max_noise_dbm>
+			<max_signal_rssi>-26</max_signal_rssi>
+			<max_noise_rssi>0</max_noise_rssi>
+		</snr-info>
+		<bsstimestamp>0</bsstimestamp>
+		<cdp-device></cdp-device>
+		<cdp-portid></cdp-portid>
+		<wireless-client number="1" type="tods" first-time="Mon Jan  2 18:49:39 2017" last-time="Mon Jan  2 18:49:39 2017">
+			<client-mac>92:68:C3:B3:BF:FF</client-mac>
+			<client-manuf>Unknown</client-manuf>
+			<SSID first-time="Mon Jan  2 18:49:39 2017" last-time="Mon Jan  2 18:49:39 2017">
+				<type>Probe Request</type>
+				<max-rate>54.000000</max-rate>
+				<packets>1</packets>
+				<encryption>None</encryption>
+			</SSID>
+			<channel>6</channel>
+			<maxseenrate>1.000000</maxseenrate>
+			<carrier>IEEE 802.11b+</carrier>
+			<encoding>CCK</encoding>
+			<packets>
+				<LLC>0</LLC>
+				<data>0</data>
+				<crypt>0</crypt>
+				<total>1</total>
+				<fragments>0</fragments>
+				<retries>0</retries>
+			</packets>
+			<snr-info>
+				<last_signal_dbm>-26</last_signal_dbm>
+				<last_noise_dbm>0</last_noise_dbm>
+				<last_signal_rssi>-26</last_signal_rssi>
+				<last_noise_rssi>0</last_noise_rssi>
+				<min_signal_dbm>-26</min_signal_dbm>
+				<min_noise_dbm>0</min_noise_dbm>
+				<min_signal_rssi>1024</min_signal_rssi>
+				<min_noise_rssi>1024</min_noise_rssi>
+				<max_signal_dbm>-26</max_signal_dbm>
+				<max_noise_dbm>0</max_noise_dbm>
+				<max_signal_rssi>-26</max_signal_rssi>
 				<max_noise_rssi>0</max_noise_rssi>
 			</snr-info>
 		</wireless-client>
