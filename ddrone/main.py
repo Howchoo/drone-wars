@@ -4,11 +4,14 @@ import commands
 from environment import Environment
 
 
-############################################################
-### AUTHOR: Jeremy Smith
-### LICENSE: GPL
-### Written for OpenWERX Drone Vulnerabilities Challenge
-############################################################
+"""
+ddrone - drone cracking made easy
+
+Written for OpenWERX Drone Vulnerabilities Challenge
+
+Author: Jeremy Smith
+License: GPL
+"""
 
 
 def main():

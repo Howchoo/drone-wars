@@ -1,0 +1,72 @@
+#!/bin/sh
+
+# This script runs when init it run during the boot process.
+# Mounts everything in the fstab
+
+mount -o remount +w /
+mount -t tmpfs mdev /dev
+mkdir -p /dev/pts
+mount -t devpts devpts /dev/pts
+mount -t sysfs sysfs /sys
+mount -t proc proc /proc
+mount -t tmpfs tmpfs /tmp
+echo /sbin/mdev > /proc/sys/kernel/hotplug
+mdev -s
+
+mknod /dev/caldata b 31 6 
+mount -t debugfs none /sys/kernel/debug 
+mkdir /var/run
+mkdir /var/lock
+mkdir /var/log
+/sbin/klogd
+/sbin/syslogd
+
+insmod /lib/modules/3.10.49/compat.ko
+insmod /lib/modules/3.10.49/crypto_blkcipher.ko
+insmod /lib/modules/3.10.49/crc-ccitt.ko       
+insmod /lib/modules/3.10.49/arc4.ko 
+insmod /lib/modules/3.10.49/cfg80211.ko 
+insmod /lib/modules/3.10.49/mac80211.ko 
+insmod /lib/modules/3.10.49/ath.ko
+country=`fw_printenv -n country`
+if [ $country = "GB" ];then
+insmod /lib/modules/3.10.49/ath9k_hw.ko cert_country=1
+else
+insmod /lib/modules/3.10.49/ath9k_hw.ko
+fi
+insmod /lib/modules/3.10.49/ath9k_common.ko 
+insmod /lib/modules/3.10.49/ath9k.ko 
+
+echo dji > /proc/sys/kernel/hostname                                     
+/etc/init.d/sysfixtime boot 
+
+iw dev wlan0 del 
+#iw phy phy0 set antenna all all 
+iw phy phy0 set antenna_gain 0 
+iw phy phy0 set distance 0 
+iw phy phy0 interface add wlan0 type managed
+
+ifconfig wlan0 up
+
+brctl addbr br-lan
+ifconfig br-lan 192.168.1.1 netmask 255.255.255.0 up
+dwifi ap start
+apsrv &
+
+ifconfig usb0 hw ether 60:60:1f:ff:ff:ff up
+brctl addif br-lan usb0
+brctl addif br-lan wlan0
+
+ifconfig lo 127.0.0.1 up
+/usr/sbin/udhcpd -S /etc/udhcpd.conf &
+#telnetd -l /bin/ash &
+mkdir -m 0755 -p /var/run/vsftpd
+/usr/sbin/vsftpd &
+djiled.sh &
+
+iw phy phy0 set retry short 1 long 1
+iw phy phy0 set rts off
+iw phy phy0 set frag 256
+iw dev wlan0 set noack_map 0x00c0
+
+touch /test.txt
