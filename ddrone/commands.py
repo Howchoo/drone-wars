@@ -1,5 +1,6 @@
 import subprocess
 import time
+import os
 
 
 def scandevs():
@@ -60,7 +61,8 @@ def cleanfiles(filename, wildcard=False):
     
     if filename and len(filename.strip()) > 0:
 
-        command = 'rm ' + filename
+        command = 'rm ' + os.getcwd() + '/' + filename
+        print command
 
         if wildcard:
             command += '*'
@@ -89,7 +91,7 @@ def enabledevice(device):
     return 0
 
 
-def crackpsk(mac, capturefilename, wordlist='wordlist.txt'):
+def crackpsk(mac, capturefilename, wordlist='/res/wordlist.txt'):
     
     command = 'aircrack-ng -w ' + wordlist + ' -b ' + mac + ' ' + capturefilename + '*.cap'
     p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)

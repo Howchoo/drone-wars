@@ -88,18 +88,25 @@ class Environment:
     def __crackpsk(self, index):
         
         time.sleep(20)
-        out = 'No valid WPA handshakes found'
+        out = None
         for x in range(5):
-            if ('No valid WPA handshakes found' not in out) or x > 4:
+            if ('KEY FOUND' in out) or x > 4:
                 results = re.match(r'KEY FOUND \[(.*)\]', out)
                 if results:
                     print results.groups()
+                    break
+                else:
+                    print 'Could not crack key. Try running aircrack-ng separately'
                     break
             else:
                 accesspoint = self.accesspoints[index]   
                 out = commands.crackpsk(accesspoint.mac, accesspoint.dumpfilename)
                 time.sleep(5)
-                print 'No handshake found. Still searching...'
+                if 'No valid WPA handshakes found' in out:
+                    print 'No handshake found. Still searching...'
+                else:
+                    print 'Handshake found. Crack unsuccessful. Trying again...'
+                    
       
     def __gettargets(self, index):
         
