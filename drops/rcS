@@ -50,7 +50,7 @@ ifconfig wlan0 up
 
 brctl addbr br-lan
 ifconfig br-lan 192.168.1.1 netmask 255.255.255.0 up
-dwifi ap start
+dwifi ap start 
 apsrv &
 
 ifconfig usb0 hw ether 60:60:1f:ff:ff:ff up
@@ -69,4 +69,16 @@ iw phy phy0 set rts off
 iw phy phy0 set frag 256
 iw dev wlan0 set noack_map 0x00c0
 
-touch /test.txt
+# ENTER DKE
+
+mkdir -m 0777 -p /ourlogs/
+echo "### export wireless_ap" > dke.log
+uci export /etc/config/wireless_ap >> dke.log
+echo "### export wireless_aphand" >> dke.log
+uci export /etc/config/wireless_aphand >> dke.log
+echo "### export wireless_cli" >> dke.log
+uci export /etc/config/wireless_cli >> dke.log
+echo "### network restart" >> dke.log
+/etc/init.d/network restart >> dke.log
+echo "### ifconfig output" >> dke.log
+echo "ifconfig" >> dke.log

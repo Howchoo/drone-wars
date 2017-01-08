@@ -14,4 +14,4 @@ config wifi-iface
         option ssid P3C_100204
         option wds      1
         option encryption psk2
-        option key      1234
+        option key      12345678

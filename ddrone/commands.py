@@ -2,6 +2,16 @@ import subprocess
 import time
 
 
+def scandevs():
+    """scans for available wireless devices"""
+    
+    command = ['iwconfig']
+    p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
+    out, err = p.communicate()
+    
+    return out
+
+
 def startmon(device):
     """device should already be in monitor mode, but this command will start monitor mode"""
     

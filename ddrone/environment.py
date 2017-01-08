@@ -23,6 +23,10 @@ class Environment:
         
     def initialize(self, d, s):
         
+        if not d and not s: raise ValueError('Must provide valid device and SSID.')
+        if not d: raise ValueError('Must provide valid device.')
+        if not s: raise ValueError('Must provide valid SSID.')
+        
         self.device = d
         self.ssid = s
         self.accesspoints = self.__getaccesspoints(d, s)
@@ -30,6 +34,18 @@ class Environment:
         
         if self.verbose:
             print "Environment initialized!"
+            
+        return self.accesspoints
+            
+            
+    def setdevice(self, d):
+        self.device = d
+        self.initialized = False
+        
+        
+    def setssid(self, s):
+        self.ssid = s
+        self.initialized = False
             
             
     def crackdrone(self, index):
