@@ -90,7 +90,7 @@ class Environment:
         time.sleep(20)
         out = None
         for x in range(5):
-            if ('KEY FOUND' in out) or x > 4:
+            if out and (('KEY FOUND' in out) or x > 10):
                 results = re.match(r'KEY FOUND \[(.*)\]', out)
                 if results:
                     print results.groups()
