@@ -5,6 +5,7 @@ class AccessPoint:
         self.ssid = s
         self.mac = m
         self.channel = c
+        self.key = None
         self.dumpfilename = s
         
     def __str__(self):

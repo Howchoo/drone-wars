@@ -91,7 +91,7 @@ def enabledevice(device):
     return 0
 
 
-def crackpsk(mac, capturefilename, wordlist='/res/wordlist.txt'):
+def crackpsk(mac, capturefilename, wordlist='./resources/wordlist.txt'):
     
     command = 'aircrack-ng -w ' + wordlist + ' -b ' + mac + ' ' + capturefilename + '*.cap'
     p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
