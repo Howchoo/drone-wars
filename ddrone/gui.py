@@ -61,8 +61,7 @@ class App:
         self.env.setdevice(d)
         
         
-    def __updateattackdetails(self, event):
-        
+    def __updateattackdetails(self, event):      
         choice = self.attacks.keys()[self.attacks.values().index(self.listbox_attacks.get(ANCHOR))]
         functions = [self.__crackpskdetails, self.__takeoverdetails, self.__deauthalldetails,
                      self.__gatherinteldetails, self.__plantrecoveryimagedetails, self.__plantdcimmalwaredetails,
@@ -76,8 +75,7 @@ class App:
         self.label_key['text'] = ('Key: ' + ap.key) if ap.key else 'Key: <NOT FOUND>'
         
         
-    def __updateaps(self):
-        
+    def __updateaps(self):  
         self.listbox_aps.delete(0, END)
         for ap in self.env.accesspoints:
             self.listbox_aps.insert(END, ap.ssid)
@@ -89,7 +87,7 @@ class App:
         Tk.update(self.root)
         
         functions = [self.__crackpsk, None, None,
-                     None, None, None,
+                     None, self.__plantrecoveryimage, None,
                      None, None]
         
         attackfunction = functions[self.selectedattack]
@@ -99,20 +97,27 @@ class App:
         self.button_attack['text'] = 'ATTACK'
         
         
-    def __updateerror(self, text):
-        
+    def __updateerror(self, text):        
         self.label_error['text'] = text
         
         
     def __crackpsk(self):
         
-        targets = [0]
-        
-        key = None
-        for target in targets:
-            key = self.env.crackdrone(target)
+        if self.env.initialized:
+            targets = [0]
+
+            key = None
+            for target in targets:
+                key = self.env.crackdrone(target)
+
+            if key: self.label_key['text'] = 'Key: ' + str(key)
+        else:
+            self.__updateerror('Environment must be initialized. Press the SCAN button.')
             
-        if key: self.label_key['text'] = 'Key: ' + str(key)
+    def __plantrecoveryimage(self):
+        
+        self.env.plantrecoveryimage()
+        self.__updateerror('Recovery image successfully planted!')
         
     def __scanenv(self):
         
@@ -129,7 +134,8 @@ class App:
             self.__updateerror(str(e))
         finally:
             self.button_scan['text'] = 'SCAN'
-            
+ 
+
     def __crackpskdetails(self):
         self.label_attackdetails['text'] = "Crack the selected SSID's\nPSK using aircrack-ng."
         
@@ -143,7 +149,7 @@ class App:
         self.label_attackdetails['text'] = "Gather significant data\nfrom drone. (TODO)"
         
     def __plantrecoveryimagedetails(self):
-        self.label_attackdetails['text'] = "Places a recovery image \n onto camera's SD card to\nreport the drone if found. (TODO)"
+        self.label_attackdetails['text'] = "Places a recovery image \n onto camera's SD card to\nreport the drone if found."
         
     def __plantdcimmalwaredetails(self):
         self.label_attackdetails['text'] = "Plants malware onto\ncamera's SD card. (TODO)"

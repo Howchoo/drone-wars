@@ -1,9 +1,9 @@
 from ftplib import FTP
 import os
 
-def changepsk(psk, username, password, host='192.168.1.1', directory=os.getcwd()):
+def changepsk(psk, ftp):
     
-    ftp = FTP(host, username, password)
+    assert (len(psk) >= 8), 'PSK must be at least 8 characters'
     
     # update config files with new PSK
     ftp.cwd('/etc/config/')
@@ -18,3 +18,7 @@ def changepsk(psk, username, password, host='192.168.1.1', directory=os.getcwd()
     ftp.sendcmd('put sysrq-trigger')
     
     ftp.quit()
+    
+def plantrecoveryimage(ftp):
+    
+    ftp.storbinary('STOR /DCIM/READ-REWARD-IF-FOUND.jpg', open('./resources/reward-recovery/READ-REWARD-IF-FOUND.jpg', 'rb'))

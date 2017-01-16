@@ -1,6 +1,7 @@
 from accesspoint import AccessPoint
 from target import Target
 from ftplib import FTP
+import attacks
 import commands
 import re
 import time
@@ -64,6 +65,17 @@ class Environment:
             print 'Out of bounds! Only ' + len(self.accesspoints) + ' drones found.'
             
 
+    def plantrecoveryimage(self):
+        
+        self.__openftp('192.168.1.3')
+        try:
+            attacks.plantrecoveryimage(self.ftp)
+        except Exception as e:
+            print str(e)
+        finally:
+            self.__closeftp()
+            
+            
     def __getaccesspoints(self, device, ssid):
 
         out = commands.searchssid(device, ssid, after=2)
@@ -135,11 +147,10 @@ class Environment:
             pass
     
     
-    def __openftp(self, ip='192.168.1.1', user='root', password='Big~9China'):
-        self.ftp = FTP(ip)
-        self.ftp.login(user, password)
+    def __openftp(self, ip='192.168.1.1', user='', password=''):
+        self.ftp = FTP(ip, user, password)
     
-    def __closeftp(self, ftp):
+    def __closeftp(self):
         self.ftp.quit()
     
     
