@@ -1,6 +1,7 @@
 from Tkinter import *
 from environment import *
 import commands
+import time
 
 
 class App:
@@ -40,18 +41,33 @@ class App:
         for attack in self.attacks:
             self.listbox_attacks.insert(END, self.attacks[attack])
         
-        self.label_key = Label(master, text='Key: NOT FOUND')
+        self.label_key = Label(master, text='Key: <NOT FOUND>')
         self.label_key.grid(row=0, column=3, padx=5, pady=10)
         
         self.button_attack = Button(master, text='ATTACK', command=self.__attack, justify=CENTER)
         self.button_attack.grid(row=4, column=3, columnspan=1, padx=5, pady=5, sticky=NSEW)
         
-        self.frame_attacks = Frame(master, width=200, height=300, borderwidth=2, relief=GROOVE, background='white')
+        self.frame_attacks = None
+        self.label_attackdetails = None
+        self.__addattackdetails(self.root)
+        
+        self.label_exceptions = None
+        self.entry_exceptions = None
+        
+        
+    def __addattackdetails(self, frame):
+        
+        self.frame_attacks = Frame(frame, width=200, height=300) #, borderwidth=0, relief=GROOVE, background='gray')
         self.frame_attacks.grid(row=0, rowspan=5, column=4, padx=5, pady=5)
         
         self.label_attackdetails = Label(self.frame_attacks, text='No attack selected.', width=20)
-        self.label_attackdetails.pack(side=TOP)
+        self.label_attackdetails.pack(side=TOP, padx=7, pady=7)
         
+    def __resetattackdetails(self, frame):
+        
+        self.frame_attacks.grid_remove()
+        self.__addattackdetails(frame)
+               
         
     def __getdevs(self):        
         return map(lambda dev: dev.split(' ')[0], filter(lambda line: 'IEEE 802.11' in line, commands.scandevs().split('\n')))
@@ -66,13 +82,15 @@ class App:
         functions = [self.__crackpskdetails, self.__takeoverdetails, self.__deauthalldetails,
                      self.__gatherinteldetails, self.__plantrecoveryimagedetails, self.__plantdcimmalwaredetails,
                      self.__djdronedetails, self.__hailmarydetails]
+        self.__resetattackdetails(self.root)
         functions[choice]()
         self.selectedattack = choice
         
         
     def __updateapselection(self, event):
-        ap = self.env.getaccesspoint(self.listbox_aps.get(ANCHOR))
-        self.label_key['text'] = ('Key: ' + ap.key) if ap.key else 'Key: <NOT FOUND>'
+        if self.env.initialized:
+            ap = self.env.getaccesspoint(self.listbox_aps.get(ANCHOR))
+            self.label_key['text'] = ('Key: ' + ap.key) if ap.key else 'Key: <NOT FOUND>'
         
         
     def __updateaps(self):  
@@ -86,11 +104,15 @@ class App:
         self.button_attack['text'] = 'ATTACKING...'
         Tk.update(self.root)
         
-        functions = [self.__crackpsk, None, None,
+        functions = [self.__crackpsk, None, self.__deauth,
                      None, self.__plantrecoveryimage, None,
                      None, None]
         
-        attackfunction = functions[self.selectedattack]
+        attackfunction = None
+        
+        if self.selectedattack: attackfunction = functions[self.selectedattack]
+        else: self.__updateerror("You haven't selected an attack yet")
+            
         if attackfunction: attackfunction()
         else: self.__updateerror('This attack function has not been implemented yet :(')
         
@@ -99,17 +121,27 @@ class App:
         
     def __updateerror(self, text):        
         self.label_error['text'] = text
+    
+    
+    def __parsemacs(self, text):
+    
+        regex = r'[a-fA-F0-9][a-fA-F0-9]:[a-fA-F0-9][a-fA-F0-9]:[a-fA-F0-9][a-fA-F0-9]:[a-fA-F0-9][a-fA-F0-9]:[a-fA-F0-9][a-fA-F0-9]:[a-fA-F0-9][a-fA-F0-9]'
+        return [x.group(0) for x in re.finditer(regex, text)]
         
+    def __deauth(self):
+        
+        if self.env.initialized:
+            if self.listbox_aps.curselection():
+                self.env.deauth(self.listbox_aps.curselection()[0], exceptions=self.__parsemacs(self.entry_exceptions.get()))
+            else:
+                self.__updateerror('Must select a target.')
+        else:
+            self.__updateerror('Environment must be initialized. Press the SCAN button.')
         
     def __crackpsk(self):
         
         if self.env.initialized:
-            targets = [0]
-
-            key = None
-            for target in targets:
-                key = self.env.crackdrone(target)
-
+            key = self.env.crackdrone(self.listbox_aps.curselection()[0])
             if key: self.label_key['text'] = 'Key: ' + str(key)
         else:
             self.__updateerror('Environment must be initialized. Press the SCAN button.')
@@ -140,10 +172,17 @@ class App:
         self.label_attackdetails['text'] = "Crack the selected SSID's\nPSK using aircrack-ng."
         
     def __takeoverdetails(self):
-        self.label_attackdetails['text'] = "Use aircrack-ng and open\nFTP to change WPA PSK\nand boot the user. (TODO)"
+        self.label_attackdetails['text'] = "Change WPA PSK\nand boot the user. (TODO)"
         
     def __deauthalldetails(self):
-        self.label_attackdetails['text'] = "Continuously deauth all\nclients besides this one. (TODO)"
+        
+        self.label_attackdetails['text'] = "Continuously deauth all\nclients besides this one."
+        
+        self.label_exceptions = Label(self.frame_attacks, text='MAC exceptions:')
+        self.label_exceptions.pack(side=TOP)
+        
+        self.entry_exceptions = Entry(self.frame_attacks, textvariable=StringVar(self.root, value='90:B6:86:22:05:11'))
+        self.entry_exceptions.pack(side=TOP)
         
     def __gatherinteldetails(self):
         self.label_attackdetails['text'] = "Gather significant data\nfrom drone. (TODO)"
@@ -155,7 +194,7 @@ class App:
         self.label_attackdetails['text'] = "Plants malware onto\ncamera's SD card. (TODO)"
         
     def __djdronedetails(self):
-        self.label_attackdetails['text'] = "Blow up other drones with\nflashing LEDs and bleep\nbloop sounds.(TODO)"
+        self.label_attackdetails['text'] = "Blow up other drones with\nflashing LEDs and bleep\nbloop sounds. (TODO)"
         
     def __hailmarydetails(self):
         self.label_attackdetails['text'] = "BEWARE: this will delete\nthe entirety of the targets\nfile system. (TODO)"

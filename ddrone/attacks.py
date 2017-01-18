@@ -22,3 +22,5 @@ def changepsk(psk, ftp):
 def plantrecoveryimage(ftp):
     
     ftp.storbinary('STOR /DCIM/READ-REWARD-IF-FOUND.jpg', open('./resources/reward-recovery/READ-REWARD-IF-FOUND.jpg', 'rb'))
+    
+        

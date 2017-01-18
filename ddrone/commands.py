@@ -13,6 +13,16 @@ def scandevs():
     return out
 
 
+def getmymacs():
+    """check all the mac addresses associated with this machine"""
+    
+    command = 'ifconfig | grep ether'
+    p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
+    out, err = p.communicate()
+    
+    return out
+
+
 def startmon(device):
     """device should already be in monitor mode, but this command will start monitor mode"""
     
