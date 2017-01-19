@@ -10,7 +10,7 @@ class App:
         
         self.root = master
         self.env = ddrone
-        self.attacks = {0:'Crack PSK', 1:'Takeover', 2:'Deauth all', 3:'Gather intel', 4:'Plant recovery image', 5:'Plant DCIM malware', 6:'DJ drone', 7:'Hail Mary'}
+        self.attacks = {0:'Crack PSK', 1:'Deauth all', 2:'Clear DCIM', 3:'Gather intel', 4:'Plant recovery image', 5:'Plant DCIM malware', 6:'DJ drone', 7:'Hail Mary'}
         self.selectedattack = None
         
         label_device = Label(master, text='Device:').grid(row=0, column=0, padx=5, pady=5)
@@ -79,11 +79,12 @@ class App:
         
     def __updateattackdetails(self, event):      
         choice = self.attacks.keys()[self.attacks.values().index(self.listbox_attacks.get(ANCHOR))]
-        functions = [self.__crackpskdetails, self.__takeoverdetails, self.__deauthalldetails,
+        functions = [self.__crackpskdetails, self.__deauthalldetails, self.__cleardcimdetails,
                      self.__gatherinteldetails, self.__plantrecoveryimagedetails, self.__plantdcimmalwaredetails,
                      self.__djdronedetails, self.__hailmarydetails]
         self.__resetattackdetails(self.root)
         functions[choice]()
+        print choice
         self.selectedattack = choice
         
         
@@ -104,15 +105,15 @@ class App:
         self.button_attack['text'] = 'ATTACKING...'
         Tk.update(self.root)
         
-        functions = [self.__crackpsk, None, self.__deauth,
+        functions = [self.__crackpsk, self.__deauth, self.__cleardcim,
                      None, self.__plantrecoveryimage, None,
                      None, None]
         
         attackfunction = None
         
-        if self.selectedattack: attackfunction = functions[self.selectedattack]
+        if self.selectedattack + 1: attackfunction = functions[self.selectedattack]
         else: self.__updateerror("You haven't selected an attack yet")
-            
+        
         if attackfunction: attackfunction()
         else: self.__updateerror('This attack function has not been implemented yet :(')
         
@@ -148,8 +149,19 @@ class App:
             
     def __plantrecoveryimage(self):
         
-        self.env.plantrecoveryimage()
-        self.__updateerror('Recovery image successfully planted!')
+        try:
+            self.env.plantrecoveryimage()
+            self.__updateerror('Recovery image successfully planted!')
+        except Exception as e:
+            self.__updateerror(str(e))
+        
+    def __cleardcim(self):
+        
+        try:
+            self.env.cleardcim()
+            self.__updateerror('All files on DCIM cleared!')
+        except Exception as e:
+            self.__updateerror(str(e))
         
     def __scanenv(self):
         
@@ -173,6 +185,9 @@ class App:
         
     def __takeoverdetails(self):
         self.label_attackdetails['text'] = "Change WPA PSK\nand boot the user. (TODO)"
+        
+    def __cleardcimdetails(self):
+        self.label_attackdetails['text'] = "Clear the entire\ncontents of DCIM folder"
         
     def __deauthalldetails(self):
         

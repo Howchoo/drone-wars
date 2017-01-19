@@ -21,6 +21,13 @@ def changepsk(psk, ftp):
     
 def plantrecoveryimage(ftp):
     
-    ftp.storbinary('STOR /DCIM/READ-REWARD-IF-FOUND.jpg', open('./resources/reward-recovery/READ-REWARD-IF-FOUND.jpg', 'rb'))
+    ftp.storbinary('STOR /DCIM/100MEDIA/READ-REWARD-IF-FOUND.jpg', open('./resources/reward-recovery/READ-REWARD-IF-FOUND.jpg', 'rb'))
     
-        
+def cleardcim(ftp):
+    
+    ftp.cwd('/DCIM/100MEDIA')
+    for item in ftp.nlst():
+        try:
+             ftp.delete(item)
+        except Exception:
+             ftp.rmd(item)

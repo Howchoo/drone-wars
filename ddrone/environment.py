@@ -65,13 +65,24 @@ class Environment:
             print 'Out of bounds! Only ' + len(self.accesspoints) + ' drones found.'
     
 
-    def plantrecoveryimage(self):
+    def plantrecoveryimage(self, ip='192.168.1.3'):
         
-        self.__openftp('192.168.1.3')
         try:
+            self.__openftp(ip)
             attacks.plantrecoveryimage(self.ftp)
         except Exception as e:
-            print str(e)
+            raise StandardError(str(e))
+        finally:
+            self.__closeftp()
+            
+            
+    def cleardcim(self, ip='192.168.1.3'):
+        
+        try:
+            self.__openftp(ip)
+            attacks.cleardcim(self.ftp)
+        except Exception as e:
+            raise StandardError(str(e))
         finally:
             self.__closeftp()
         
@@ -168,7 +179,7 @@ class Environment:
         self.ftp = FTP(ip, user, password)
     
     def __closeftp(self):
-        self.ftp.quit()
+        if self.ftp: self.ftp.quit()
     
     
     def __startmonitormode(self, index):
