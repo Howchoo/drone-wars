@@ -1,17 +1,18 @@
 # drone-wars
-
-Our team's working repository for the OpenWERX drone competition. (reset Zach's wifi)
-
-## Setup
-
-* Make sure that the controller sticks are at center position. If not, the controller will continuously beep.
+The Dunning-Kruger Experience's working repository for the [OpenWERX](http://www.sofwerx.org/openwerx/) drone competition. (reset Zach's wifi)
 
 ## Dependencies
 ### Software
+* Python
+* [TkInter](https://wiki.python.org/moin/TkInter)
 * Aircrack-ng 1.2 RC 4 (https://www.aircrack-ng.org/)
 
 ### Hardware
 * @todo
+
+## Running DDrone GUI
+1. Clone and navigate to this repository.
+2. Run `python ddrone/gui.py`
 
 ## License (GNU GPL)
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
