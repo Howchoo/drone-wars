@@ -6,6 +6,7 @@ The Dunning-Kruger Experience's working repository for the [OpenWERX](http://www
 * Python
 * [TkInter](https://wiki.python.org/moin/TkInter)
 * Aircrack-ng 1.2 RC 4 (https://www.aircrack-ng.org/)
+* iwconfig
 
 ### Hardware
 * @todo
