@@ -3,14 +3,17 @@ The Dunning-Kruger Experience's working repository for the [OpenWERX](http://www
 
 ## Dependencies
 ### Software
-* Python
+* Python 2.7
 * [TkInter](https://wiki.python.org/moin/TkInter)
 * Aircrack-ng 1.2 RC 4 (https://www.aircrack-ng.org/)
 * iwconfig
+* xterm
+* iw
 * VNC server and client (optional)
 
 ### Hardware
-* @todo
+* Wireless device with monitor mode capability
+* HackRF (required for some functionality)
 
 ## Running DDrone GUI
 1. Clone and navigate to this repository.
