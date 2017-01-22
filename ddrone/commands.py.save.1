@@ -50,8 +50,8 @@ def searchssid(device, ssid, after=None):
 def sniffssid(device, ssid, channel, dumpfilename='output'):
     """start sniffing packets of SSID with device"""
     
-    # changed --essid to -s for running on the Pi
-    command = 'xterm -hold -e "airodump-ng --channel ' + channel + ' -s ' + ssid + ' --write ' + dumpfilename + ' ' + device + '" &'
+    command = 'xterm -hold -e "airodump-ng --channel ' + channel + ' --essid ' + ssid + ' --write ' + dumpfilename + ' ' + device + '" &'
+    
     p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
     
     return 0

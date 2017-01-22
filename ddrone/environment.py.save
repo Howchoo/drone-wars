@@ -171,11 +171,9 @@ class Environment:
             with open(accesspoint.dumpfilename + '-01.csv', 'r') as f:
                 lines = f.readlines()
                 accesspoint.mac = filter(lambda line: accesspoint.ssid in line, lines)[0].split(',')[0]
+                print 'AP MAC' + str(accesspoint.mac)
                 #accesspoint.mac = ((lines[2].split(','))[0]).strip()
-                cleanlines = lines[lines.index('Station MAC, First time seen, Last time seen, Power, # packets, BSSID, Probed ESSIDs\r\n'):]
-                print cleanlines
-                #self.targets = map(lambda client: Target(client.split(',')[0], accesspoint), filter(lambda fullline: accesspoint.mac in fullline, filter(lambda line: len(line.strip()) > 1, lines[5:])))
-                self.targets = map(lambda client: Target(client.split(',')[0], accesspoint), filter(lambda fullline: accesspoint.mac in fullline, cleanlines))
+                self.targets = map(lambda client: Target(client.split(',')[0], accesspoint), filter(lambda fullline: accesspoint.mac in fullline, filter(lambda line: len(line.strip()) > 1, lines[5:])))
                 print 'TARGETS FOUND' + str(self.targets)
                 for target in self.targets:
                     print str(target)
@@ -196,7 +194,6 @@ class Environment:
         commands.airmoncheckkill()
         commands.disabledevice(self.device)
         out = commands.startmonitormode(self.device, accesspoint.channel)
-
         try:
             #self.mondevice = re.match(r'(.*)](.*)\)', ''.join(filter(lambda line: 'monitor mode enabled' in line, out.split('\n')))).groups('0')[1]
             self.mondevice = 'mon0'
