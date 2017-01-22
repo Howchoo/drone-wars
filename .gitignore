@@ -3,3 +3,4 @@
 *.csv
 *.netxml
 *.log
+ddrone/resources/gps/gpssim.bin

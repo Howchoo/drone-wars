@@ -63,8 +63,8 @@ class App:
         self.label_attackdetails = Label(self.frame_attacks, text='No attack selected.', width=20)
         self.label_attackdetails.pack(side=TOP, padx=7, pady=7)
         
-    def __resetattackdetails(self, frame):
         
+    def __resetattackdetails(self, frame):     
         self.frame_attacks.grid_remove()
         self.__addattackdetails(frame)
                
@@ -77,15 +77,18 @@ class App:
         self.env.setdevice(d)
         
         
-    def __updateattackdetails(self, event):      
-        choice = self.attacks.keys()[self.attacks.values().index(self.listbox_attacks.get(ANCHOR))]
-        functions = [self.__crackpskdetails, self.__deauthalldetails, self.__cleardcimdetails,
-                     self.__gatherinteldetails, self.__plantrecoveryimagedetails, self.__plantdcimmalwaredetails,
-                     self.__djdronedetails, self.__hailmarydetails]
-        self.__resetattackdetails(self.root)
-        functions[choice]()
-        print choice
-        self.selectedattack = choice
+    def __updateattackdetails(self, event):
+        
+        try:
+            choice = self.listbox_attacks.curselection()[0]            
+            functions = {0:self.__crackpskdetails, 1:self.__deauthalldetails, 2:self.__cleardcimdetails,
+                         3:self.__gatherinteldetails, 4:self.__plantrecoveryimagedetails, 5:self.__plantdcimmalwaredetails,
+                         6:self.__djdronedetails, 7:self.__hailmarydetails}
+            self.__resetattackdetails(self.root)
+            functions[choice]()
+            self.selectedattack = choice
+        except IndexError as e:
+            self.__updateerror(str(e))
         
         
     def __updateapselection(self, event):
@@ -105,9 +108,9 @@ class App:
         self.button_attack['text'] = 'ATTACKING...'
         Tk.update(self.root)
         
-        functions = [self.__crackpsk, self.__deauth, self.__cleardcim,
-                     None, self.__plantrecoveryimage, None,
-                     None, None]
+        functions = {0:self.__crackpsk, 1:self.__deauth, 2:self.__cleardcim,
+                     3:None, 4:self.__plantrecoveryimage, 5:None,
+                     6:None, 7:None}
         
         attackfunction = None
         
@@ -124,52 +127,53 @@ class App:
         self.label_error['text'] = text
     
     
-    def __parsemacs(self, text):
-    
+    def __getmacs(self, text):    
         regex = r'[a-fA-F0-9][a-fA-F0-9]:[a-fA-F0-9][a-fA-F0-9]:[a-fA-F0-9][a-fA-F0-9]:[a-fA-F0-9][a-fA-F0-9]:[a-fA-F0-9][a-fA-F0-9]:[a-fA-F0-9][a-fA-F0-9]'
         return [x.group(0) for x in re.finditer(regex, text)]
         
-    def __deauth(self):
         
+    def __deauth(self):        
         if self.env.initialized:
+            print self.listbox_aps.curselection()
             if self.listbox_aps.curselection():
-                self.env.deauth(self.listbox_aps.curselection()[0], exceptions=self.__parsemacs(self.entry_exceptions.get()))
+                self.env.deauth(self.listbox_aps.curselection()[0], exceptions=self.__getmacs(self.entry_exceptions.get()))
             else:
                 self.__updateerror('Must select a target.')
         else:
             self.__updateerror('Environment must be initialized. Press the SCAN button.')
         
-    def __crackpsk(self):
         
+    def __crackpsk(self):       
         if self.env.initialized:
-            key = self.env.crackdrone(self.listbox_aps.curselection()[0])
-            if key: self.label_key['text'] = 'Key: ' + str(key)
+            if self.listbox_aps.curselection():
+                key = self.env.crackdrone(self.listbox_aps.curselection()[0])
+                if key: self.label_key['text'] = 'Key: ' + str(key)
+            else:
+                self.__updateerror('Must select a target.')
         else:
             self.__updateerror('Environment must be initialized. Press the SCAN button.')
             
-    def __plantrecoveryimage(self):
-        
+            
+    def __plantrecoveryimage(self):        
         try:
             self.env.plantrecoveryimage()
             self.__updateerror('Recovery image successfully planted!')
         except Exception as e:
             self.__updateerror(str(e))
         
-    def __cleardcim(self):
         
+    def __cleardcim(self):       
         try:
             self.env.cleardcim()
             self.__updateerror('All files on DCIM cleared!')
         except Exception as e:
             self.__updateerror(str(e))
         
-    def __scanenv(self):
         
+    def __scanenv(self):     
         self.button_scan['text'] = 'SCANNING...'
-        Tk.update(self.root)
-        
+        Tk.update(self.root)       
         self.env.ssid = self.entry_ssid.get()
-        
         accesspoints = None
         try:
             accesspoints = self.env.initialize(self.env.device, self.env.ssid)
@@ -178,8 +182,8 @@ class App:
             self.__updateerror(str(e))
         finally:
             self.button_scan['text'] = 'SCAN'
- 
-
+            
+            
     def __crackpskdetails(self):
         self.label_attackdetails['text'] = "Crack the selected SSID's\nPSK using aircrack-ng."
         
