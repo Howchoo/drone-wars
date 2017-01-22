@@ -13,7 +13,7 @@ The Dunning-Kruger Experience's working repository for the [OpenWERX](http://www
 
 ## Running DDrone GUI
 1. Clone and navigate to this repository.
-2. Run `python ddrone/gui.py`
+2. Run `sudo python ddrone/gui.py`
 
 ## License (GNU GPL)
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
