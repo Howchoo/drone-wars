@@ -22,6 +22,18 @@ The Dunning-Kruger Experience's working repository for the [OpenWERX](http://www
 ## Running DDrone GUI on Remote Computer (e.g. Raspberry Pi)
 This program is capable of being run on a Raspberry Pi mounted to a separate (non-target) drone. To do this, you'll want to [install a VNC server on your Raspberry Pi](https://howchoo.com/g/yzm1nmq5ngq/how-to-setup-vnc-on-your-raspberry-pi) to access the DDrone GUI from a remote machine.
 
+## Raspberry Pi VNC
+
+Format is `pi ip address`:`port number``desktop number`
+```
+[pi ip]:[port][desktop number]
+
+[192.168.1.151]:[590][1]
+
+192.168.1.151:5901
+```
+pw: raspberr
+
 ## Disclaimer
 Do not use this software for illegal purposes. It was developed for and is being provided as part of a research project. Signal spoofing and/or jamming is illegal in most countries -- don't do illegal things.
 
