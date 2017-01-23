@@ -1,4 +1,5 @@
 from Tkinter import *
+from PIL import ImageTk, Image
 from environment import *
 import commands
 import time
@@ -12,6 +13,8 @@ class App:
         self.env = ddrone
         self.attacks = {0:'Crack PSK', 1:'Deauth all', 2:'Clear DCIM', 3:'Gather intel', 4:'Plant recovery image', 5:'Plant DCIM malware', 6:'DJ drone', 7:'Hail Mary', 8:'Jam GPS', 9:'Spoof GPS'}
         self.selectedattack = None
+        
+        self.logoimg = ImageTk.PhotoImage(Image.open('resources/img/python.png'))       
         
         label_device = Label(master, text='Device:').grid(row=0, column=0, padx=5, pady=5)
         label_ssid = Label(master, text='SSID:').grid(row=1, column=0, padx=5, pady=5)
@@ -49,7 +52,11 @@ class App:
         
         self.frame_attacks = None
         self.label_attackdetails = None
+        self.label_logo = None
         self.__addattackdetails(self.root)
+        
+        self.label_logo = Label(master, image = self.logoimg)
+        self.label_logo.grid(row=0, rowspan=2, column=4, padx=5, pady=5)
         
         self.label_exceptions = None
         self.entry_exceptions = None
@@ -58,7 +65,7 @@ class App:
     def __addattackdetails(self, frame):
         
         self.frame_attacks = Frame(frame, width=200, height=300) #, borderwidth=0, relief=GROOVE, background='gray')
-        self.frame_attacks.grid(row=0, rowspan=5, column=4, padx=5, pady=5)
+        self.frame_attacks.grid(row=2, rowspan=3, column=4, padx=5, pady=5)
         
         self.label_attackdetails = Label(self.frame_attacks, text='No attack selected.', width=20)
         self.label_attackdetails.pack(side=TOP, padx=7, pady=7)
