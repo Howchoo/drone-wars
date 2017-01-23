@@ -10,7 +10,7 @@ class App:
         
         self.root = master
         self.env = ddrone
-        self.attacks = {0:'Crack PSK', 1:'Deauth all', 2:'Clear DCIM', 3:'Gather intel', 4:'Plant recovery image', 5:'Plant DCIM malware', 6:'DJ drone', 7:'Hail Mary'}
+        self.attacks = {0:'Crack PSK', 1:'Deauth all', 2:'Clear DCIM', 3:'Gather intel', 4:'Plant recovery image', 5:'Plant DCIM malware', 6:'DJ drone', 7:'Hail Mary', 8:'Jam GPS', 9:'Spoof GPS'}
         self.selectedattack = None
         
         label_device = Label(master, text='Device:').grid(row=0, column=0, padx=5, pady=5)
@@ -83,7 +83,8 @@ class App:
             choice = self.listbox_attacks.curselection()[0]            
             functions = {0:self.__crackpskdetails, 1:self.__deauthalldetails, 2:self.__cleardcimdetails,
                          3:self.__gatherinteldetails, 4:self.__plantrecoveryimagedetails, 5:self.__plantdcimmalwaredetails,
-                         6:self.__djdronedetails, 7:self.__hailmarydetails}
+                         6:self.__djdronedetails, 7:self.__hailmarydetails, 8:self.__jamgpsdetails,
+                         9:self.__spoofgpsdetails}
             self.__resetattackdetails(self.root)
             functions[choice]()
             self.selectedattack = choice
@@ -110,7 +111,7 @@ class App:
         
         functions = {0:self.__crackpsk, 1:self.__deauth, 2:self.__cleardcim,
                      3:None, 4:self.__plantrecoveryimage, 5:None,
-                     6:None, 7:None}
+                     6:None, 7:None, 8:None, 9:None}
         
         attackfunction = None
         
@@ -216,7 +217,13 @@ class App:
         self.label_attackdetails['text'] = "Blow up other drones with\nflashing LEDs and bleep\nbloop sounds. (TODO)"
         
     def __hailmarydetails(self):
-        self.label_attackdetails['text'] = "BEWARE: this will delete\nthe entirety of the targets\nfile system. (TODO)"
+        self.label_attackdetails['text'] = "BEWARE: This will delete\nthe entirety of the target's\nfile system. (TODO)"
+        
+    def __jamgpsdetails(self):
+        self.label_attackdetails['text'] = "Jam GPS signal to\ntrigger RTH function.\n\nBEWARE: This is illegal in\nmost countries.\n\n(HackRF required) (TODO)"
+        
+    def __spoofgpsdetails(self):
+        self.label_attackdetails['text'] = "Spoof GPS signal to\nsimulate NFZ.\n\nBEWARE: This is illegal in\nmost countries.\n\n(HackRF required) (TODO)"
         
 
 def main():
