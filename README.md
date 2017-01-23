@@ -32,7 +32,7 @@ Format is `pi ip address`:`port number``desktop number`
 
 192.168.1.151:5901
 ```
-pw: raspberr
+pw: raspberry
 
 ## Disclaimer
 Do not use this software for illegal purposes. It was developed for and is being provided as part of a research project. Signal spoofing and/or jamming is illegal in most countries -- don't do illegal things.
