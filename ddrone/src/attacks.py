@@ -19,6 +19,21 @@ def cleardcim(ftp):
         except Exception:
              ftp.rmd(item)
                 
+                
+def gatherinteldrone(ftp):
+    print 'gather drone intel'
+    ftp.cwd('run')
+    ftp.retrlines('LIST')
+
+def gatherintelcamera(ftp):
+    print 'gather camera intel'
+    ftp.retrlines('LIST')
+
+def gatherintelcontroller(ftp):
+    print 'gather controller intel'
+    ftp.cwd('run')
+    ftp.retrlines('LIST')
+                
 
 ########UNUSED ATTACKS BELOW########
 

