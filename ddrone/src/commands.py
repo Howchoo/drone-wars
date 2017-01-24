@@ -101,11 +101,24 @@ def enabledevice(device):
     return 0
 
 
-def crackpsk(mac, capturefilename, wordlist='./resources/wordlist.txt'):
+def crackpsk(mac, capturefilename, wordlist='../res/wordlists/short.txt'):
     
     command = 'aircrack-ng -w ' + wordlist + ' -b ' + mac + ' ' + capturefilename + '*.cap'
     p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
     out, err = p.communicate()
+    
+    return out
+
+
+def hackrftransfer(simfile='../res/gps/gpssim.bin'):
+    
+    out = None
+    try:
+        command = 'hackrf_transfer -f 1575420000 -p 1 -s 2600000 -a 1 -x 15 -R -t ' + simfile
+        p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
+        out, err = p.communicate()
+    except KeyboardInterrupt as e:
+        print 'DDRONE: Exited and returned to ddrone successfully'
     
     return out
 

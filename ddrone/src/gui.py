@@ -14,7 +14,7 @@ class App:
         self.attacks = {0:'Crack PSK', 1:'Deauth all', 2:'Clear DCIM', 3:'Gather intel', 4:'Plant recovery image', 5:'Plant DCIM malware', 6:'DJ drone', 7:'Hail Mary', 8:'Jam GPS', 9:'Spoof GPS'}
         self.selectedattack = None
         
-        self.logoimg = ImageTk.PhotoImage(Image.open('resources/img/python.png'))       
+        self.logoimg = ImageTk.PhotoImage(Image.open('../res/img/logo.png'))       
         
         label_device = Label(master, text='Device:').grid(row=0, column=0, padx=5, pady=5)
         label_ssid = Label(master, text='SSID:').grid(row=1, column=0, padx=5, pady=5)
@@ -118,7 +118,7 @@ class App:
         
         functions = {0:self.__crackpsk, 1:self.__deauth, 2:self.__cleardcim,
                      3:None, 4:self.__plantrecoveryimage, 5:None,
-                     6:None, 7:None, 8:None, 9:None}
+                     6:None, 7:None, 8:self.__jamgps, 9:None}
         
         attackfunction = None
         
@@ -160,6 +160,20 @@ class App:
                 self.__updateerror('Must select a target.')
         else:
             self.__updateerror('Environment must be initialized. Press the SCAN button.')
+            
+                
+    def __jamgps(self):
+        try:
+            self.env.jamgps()
+        except Exception as e:
+            self.__updateerror(str(e))
+            
+            
+    def __spoofgps(self):
+        try:
+            self.env.spoofgps()
+        except Exception as e:
+            self.__updateerror(str(e))
             
             
     def __plantrecoveryimage(self):        
@@ -227,7 +241,7 @@ class App:
         self.label_attackdetails['text'] = "BEWARE: This will delete\nthe entirety of the target's\nfile system. (TODO)"
         
     def __jamgpsdetails(self):
-        self.label_attackdetails['text'] = "Jam GPS signal to\ntrigger RTH function.\n\nBEWARE: This is illegal in\nmost countries.\n\n(HackRF required) (TODO)"
+        self.label_attackdetails['text'] = "Jam GPS signal to\ntrigger RTH function.\n\nBEWARE: This is illegal in\nmost countries.\n\n(HackRF required)"
         
     def __spoofgpsdetails(self):
         self.label_attackdetails['text'] = "Spoof GPS signal to\nsimulate NFZ.\n\nBEWARE: This is illegal in\nmost countries.\n\n(HackRF required) (TODO)"

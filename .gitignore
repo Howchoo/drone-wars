@@ -4,3 +4,4 @@
 *.netxml
 *.log
 ddrone/resources/gps/gpssim.bin
+ddrone/res/gps/gpssim.bin
