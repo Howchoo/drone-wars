@@ -226,14 +226,14 @@ class App:
         
         self.label_attackdetails['text'] = "Continuously deauth all\nclients besides this one."
         
-        self.label_exceptions = Label(self.frame_attacks, text='MAC exceptions:')
+        self.label_exceptions = Label(self.frame_attacks, text='Other exceptions:')
         self.label_exceptions.pack(side=TOP)
         
         self.entry_exceptions = Entry(self.frame_attacks, textvariable=StringVar(self.root, value='90:B6:86:22:05:11'))
         self.entry_exceptions.pack(side=TOP)
         
     def __gatherinteldetails(self):
-        self.label_attackdetails['text'] = "Gather significant data\nfrom drone. (TODO)"
+        self.label_attackdetails['text'] = "Gather significant data\nfrom drone."
         
     def __plantrecoveryimagedetails(self):
         self.label_attackdetails['text'] = "Places a recovery image \n onto camera's SD card to\nreport the drone if found."

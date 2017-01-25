@@ -66,7 +66,7 @@ class Environment:
             
             
     def jamgps(self):
-        commands.hackrftransfer()
+        out = commands.hackrftransfer()
         
         
     def spoofgps(self):
