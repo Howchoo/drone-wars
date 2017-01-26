@@ -42,8 +42,11 @@ Format is `pi ip address`:`port number``desktop number`
 
 192.168.1.151:5901
 ```
-Default Raspberry Pi user:pass:
-```pi:raspberry```
+Default Raspberry Pi credentials:
+```
+user: pi
+pass: raspberry
+```
 
 ## DDrone Program Functionality based on by Phantom version (3/4)
 Certain DDrone programs will only function on the Phantom 3 as the Phantom 3 has an open wireless connection. Additionally, some programs may no longer function as DJI closes vulnerabilities by releasing firmware updates.
