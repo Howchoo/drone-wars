@@ -1,5 +1,9 @@
 # drone-wars
-The Dunning-Kruger Experience's working repository for the [OpenWERX](http://www.sofwerx.org/openwerx/) drone competition. (reset Zach's wifi)
+This repository is a collection of programs designed to exploit vulnerabilities in the DJI Phantom 3, as well as a GUI called DDrone that can be used to execute them.
+
+Some hardware is required for certain exploits; we've listed this hardware below, and have opted to execute it on a Raspberry Pi, with all hardware mounted on a high-end hobbyist drone (the "attack drone").
+
+This software was developed as a research project by the DKE (Dunning-Kruger Experience) group for the [OpenWERX](http://www.sofwerx.org/openwerx/) drone-hacking competition.
 
 ## Dependencies
 ### Software
@@ -9,11 +13,15 @@ The Dunning-Kruger Experience's working repository for the [OpenWERX](http://www
 * iwconfig
 * xterm
 * iw
-* VNC server and client (optional)
+* VNC server and client (optional, required for running DDrone on a remote device such as an attack drone)
 
 ### Hardware
 * Wireless device with monitor mode capability
-* HackRF (required for some functionality)
+* HackRF One (required for some functionality)
+* Alpha Packet Injection-Capable WiFi Dongle (Optional, required if your device doesn't support monitoring/packet injection)
+* Raspberry Pi 3 (Optional, required for attack drone)
+* Lithium Polymer battery (Optional, required for powering equipment on attack drone)
+* Wiring harness for powering components (Optional, required for powering equipment on attack drone)
 
 ## Running DDrone GUI
 1. Clone and navigate to this repository.
@@ -23,7 +31,6 @@ The Dunning-Kruger Experience's working repository for the [OpenWERX](http://www
 This program is capable of being run on a Raspberry Pi mounted to a separate (non-target) drone. To do this, you'll want to [install a VNC server on your Raspberry Pi](https://howchoo.com/g/yzm1nmq5ngq/how-to-setup-vnc-on-your-raspberry-pi) to access the DDrone GUI from a remote machine.
 
 ## Raspberry Pi VNC
-
 Format is `pi ip address`:`port number``desktop number`
 ```
 [pi ip]:[port][desktop number]
