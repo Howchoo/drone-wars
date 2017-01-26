@@ -59,7 +59,7 @@ brctl addif br-lan wlan0
 
 ifconfig lo 127.0.0.1 up
 /usr/sbin/udhcpd -S /etc/udhcpd.conf &
-#telnetd -l /bin/ash &
+telnetd -l /bin/ash &
 mkdir -m 0755 -p /var/run/vsftpd
 /usr/sbin/vsftpd &
 djiled.sh &
@@ -68,17 +68,3 @@ iw phy phy0 set retry short 1 long 1
 iw phy phy0 set rts off
 iw phy phy0 set frag 256
 iw dev wlan0 set noack_map 0x00c0
-
-# ENTER DKE
-
-mkdir -m 0777 -p /ourlogs/
-echo "### export wireless_ap" > dke.log
-uci export /etc/config/wireless_ap >> dke.log
-echo "### export wireless_aphand" >> dke.log
-uci export /etc/config/wireless_aphand >> dke.log
-echo "### export wireless_cli" >> dke.log
-uci export /etc/config/wireless_cli >> dke.log
-echo "### network restart" >> dke.log
-/etc/init.d/network restart >> dke.log
-echo "### ifconfig output" >> dke.log
-echo "ifconfig" >> dke.log

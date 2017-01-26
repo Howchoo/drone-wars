@@ -1,7 +1,0 @@
-REBOOTING OPENWRT:
-Write anything besides a binary 0 to "/proc/sysrq-trigger"
-
-SET WPA PASSWORD:
-Overwrite the following files in "/etc/config/":
-wireless_aphand
-wireless_cli
