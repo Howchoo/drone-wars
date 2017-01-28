@@ -50,8 +50,8 @@ def searchssid(device, ssid, after=None):
 def sniffssid(device, ssid, channel, dumpfilename='output'):
     """start sniffing packets of SSID with device"""
     
-    # changed --essid to -s for running on the Pi
-    command = 'xterm -hold -e "airodump-ng --channel ' + channel + ' -s ' + ssid + ' --write ' + dumpfilename + ' ' + device + '" &'
+    command = 'xterm -hold -e "airodump-ng --channel ' + channel + ' --essid ' + ssid + ' --write ' + dumpfilename + ' ' + device + '" &'
+    
     p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
     
     return 0
@@ -102,24 +102,11 @@ def enabledevice(device):
     return 0
 
 
-def crackpsk(mac, capturefilename, wordlist='../res/wordlists/short.txt'):
+def crackpsk(mac, capturefilename, wordlist='./resources/wordlist.txt'):
     
     command = 'aircrack-ng -w ' + wordlist + ' -b ' + mac + ' ' + capturefilename + '*.cap'
     p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
     out, err = p.communicate()
-    
-    return out
-
-
-def hackrftransfer(simfile='../res/gps/gpssim.bin'):
-    
-    out = None
-    try:
-        command = 'hackrf_transfer -f 1575420000 -p 1 -s 2600000 -a 1 -x 15 -R -t ' + simfile
-        p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
-        out, err = p.communicate()
-    except KeyboardInterrupt as e:
-        print 'DDRONE: Exited and returned to ddrone successfully'
     
     return out
 
