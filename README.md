@@ -61,19 +61,19 @@ Currently, only the GPS jamming/spoofing exploits can be performed on the Phanto
 
 ### "Takeover" (Deauth) Program - Primary Attack Mechanism
 
-#### Description
+#### Description:
 Take over control of the drone by deauthenticating the pilot’s wireless device and connecting directly to the controller using our wireless device or a custom program written via the SDK that can be run on the attack drone. Approximate WiFi broadcast distance with a consumer cellphone receiver is approximately 0.5 miles.
 
-#### Notes
+#### Notes:
 Unaffected by recent firmware update, and DJI is unlikely to require a cable to be plugged in in the future for the P3, so this process should work far into the future.
 
-#### Limitations
+#### Limitations:
 
 * A strong SSID password will take longer to crack, but can potentially be done using a cloud/server-side solution or with more advanced military hardware.
 
 * Certain post-takeover options (Waypoint, POI, etc.) may be unavailable depending on the flight mode set by the controller.
 
-#### Steps
+#### Steps:
 
 1. Scan for any Phantom SSID or MAC address
 
@@ -139,7 +139,7 @@ Unaffected by recent firmware update, and DJI is unlikely to require a cable to 
 
 ### "Intel" Program (subroutine)
 
-#### Description
+#### Description:
 Download identifying files from drone prior to drone destruction and store them on our device (Pi).
 
 * Past wireless network activity
@@ -156,24 +156,24 @@ Download identifying files from drone prior to drone destruction and store them 
 
 ### "Reward/Recovery" Program (subroutine)
 
-#### Description
+#### Description:
 Replace contents of DCIM with a "reward if found" identification image (with instructions for returning drone) prior to destruction in case the physical drone remains cannot be recovered by us. This allows for physical inspection of the drone to recover (fingerprints, serial number, etc.) if the payload has not detonated and if the drone.
 
 ## Planned Programs (to be coded)
 
 ### "Hail Mary" Program
 
-#### Purpose
+#### Purpose:
 Cause the drone to crash by destroying its filesystem.
 
-#### Description
+#### Description:
 As a last ditch effort, we will permanently brick all 3 filesystems (controller, drone, and camera). The pilot is now limited to manual (A) LOS flight.
 
 ------
 
 ### "DCIM Malware" Program
 
-#### Description
+#### Description:
 We place "image malware" on the drone. It can infect the pilot’s device if he either pulls images mid-flight or if the droneis returned to/retrieved by the pilot for one of a number of reasons:
 
 * The pilot aborts the mission for an unknown reason.
@@ -186,7 +186,7 @@ We place "image malware" on the drone. It can infect the pilot’s device if he 
 
 The pilot eventually retrieves contents from the DCIM, or transfers images to his wireless device mid-flight, and our image malware infects his machine and broadcasts data to lead to his location.
 
-#### Possible Execution Methods
+#### Possible Execution Methods:
 
 * Masked file extension (cat.jpg.exe)
 
@@ -198,17 +198,17 @@ The pilot eventually retrieves contents from the DCIM, or transfers images to hi
 
 ### "Evil Twin" Program
 
-#### Description
+#### Description:
 Spoof the original controller’s MAC address, IP, SSID, encryption key, type and connection to take control of the drone using a new controller.
 
 ------
 
 ### "Line-of-Sight Disruption" Program
 
-#### Purpose
+#### Purpose:
 Degrade the "Line-of-sight" (LOS) Atti (manual) flight mode severely by making the drone invisible (at night) or making its visual position misleading (during the day). Assumes the attack will be carried out at least 100 yards.
 
-#### Description
+#### Description:
 Video transmission has already been disabled (either by us modifying the filesystem or by forcing a deauth continuously). The pilot must now resort to flying the drone manually via LOS. We will now make manual LOS flight impossible at night and nearly impossible during the day. We disable or modify LED behavior to degrade this line-of-sight manual flight mode:
 
 * Nighttime flying: Disable LEDs entirely, rendering the aircraft invisible.
@@ -219,20 +219,20 @@ Video transmission has already been disabled (either by us modifying the filesys
 
 ### Force RTH
 
-#### Purpose
+#### Purpose:
 Force return to home, returning the device to the pilot and away from his intended target.
 
-#### Description
+#### Description:
 Jam RF, forcing the default behavior of returning to home (unless this setting is changed in the app to "Hover"). The drone will return to home or hover after 3 seconds.
 
 ------
 
 ### "Find the Pilot" Program
 
-#### Purpose
+#### Purpose:
 Locate the pilot of a DJI Phantom drone so that SOF can apprehend him.
 
-#### Description
+#### Description:
 Using our drone’s GPS and a sweeping flight pattern, we can monitor the signal strength of the pilot’s wireless network (without even being connected to it), thus locating the pilot and broadcasting his coordinates to relevant parties for retrieval.
 
 ## Disclaimer
