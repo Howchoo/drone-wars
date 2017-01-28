@@ -35,11 +35,11 @@ class App:
         self.button_scan = Button(master, text='SCAN', command=self.__scanenv, justify=CENTER)
         self.button_scan.grid(row=2, columnspan=2, padx=5, pady=5, sticky=NSEW)
         
-        self.listbox_aps = Listbox(master, selectmode=SINGLE, exportselection=False, yscrollcommand=scrollbar.set)
+        self.listbox_aps = Listbox(master, selectmode=SINGLE, exportselection=False)
         self.listbox_aps.grid(row=3, rowspan=2, columnspan=2, padx=5, pady=5, sticky=NSEW)
         self.listbox_aps.bind('<<ListboxSelect>>', self.__updateapselection)
         
-        self.listbox_attacks = Listbox(master, selectmode=SINGLE, yscrollcommand=scrollbar.set)
+        self.listbox_attacks = Listbox(master, selectmode=SINGLE)
         self.listbox_attacks.grid(row=1, rowspan=3, column=3, padx=5, pady=5)
         self.listbox_attacks.bind('<<ListboxSelect>>', self.__updateattackdetails)
               
