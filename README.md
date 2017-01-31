@@ -157,7 +157,7 @@ Download identifying files from drone prior to drone destruction and store them 
 ### "Reward/Recovery" Program (subroutine)
 
 #### Description:
-Replace contents of DCIM with a "reward if found" identification image (with instructions for returning drone) prior to destruction in case the physical drone remains cannot be recovered by us. This allows for physical inspection of the drone to recover (fingerprints, serial number, etc.) if the payload has not detonated and if the drone.
+Replace contents of DCIM with a "reward if found" identification image (with instructions for returning drone) prior to destruction in case the physical drone remains cannot be recovered by us. This allows for physical inspection of the drone to recover (fingerprints, serial number, etc.) if the payload has not detonated and if the drone has not yet been physically recovered.
 
 ## Planned Programs (to be coded)
 
