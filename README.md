@@ -3,7 +3,7 @@ This repository is a collection of programs designed to exploit vulnerabilities 
 
 Some hardware is required for certain exploits; we've listed this hardware below, and have opted to execute it on a Raspberry Pi, with all hardware mounted on a high-end hobbyist drone (the "attack drone").
 
-This software was developed as a research project by the DKE (Dunning-Kruger Experience) group for the [OpenWERX](http://www.sofwerx.org/openwerx/) drone-hacking competition.
+This software was developed as a research project by the DKE (Dunning-Kruger Experience) group for the [OpenWERX](http://www.sofwerx.org/openwerx/) drone-hacking competition. You can see our team's presentation video of DDrone in action [here](https://www.youtube.com/watch?v=gUuN9khOv3w).
 
 ## Dependencies
 ### Software
